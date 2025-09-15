@@ -267,7 +267,7 @@
     <?php
     $pesan_whatsapp = "Halo, saya tertarik dengan produk furnitur dari RB Teknik. Bisa minta informasi lebih lanjut?";
     ?>
-    <a href="https://wa.me/6281234567890?text=<?= urlencode($pesan_whatsapp) ?>" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat di WhatsApp">
+    <a href="https://wa.me/6283894056521?text=<?= urlencode($pesan_whatsapp) ?>" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat di WhatsApp">
         <i class="bi bi-whatsapp"></i>
     </a>
 

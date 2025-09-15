@@ -151,7 +151,7 @@
                     </div>
 
                     <div class="card-footer bg-white text-end border-0 pt-4 px-0">
-                        <a href="<?= base_url('admin/product'); ?>" class="btn btn-secondary me-2">Batal</a>
+                        <a href="<?= base_url('admin/'); ?>" class="btn btn-secondary me-2">Batal</a>
                         <button type="submit" class="btn btn-dark fw-semibold">
                             <i class="bi bi-check-circle me-1"></i> Simpan Produk
                         </button>

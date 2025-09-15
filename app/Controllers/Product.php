@@ -13,16 +13,54 @@ class Product extends Controller
         $productModel = new ProductModel();
         $imageModel   = new ProductImageModel();
 
-        $products = $productModel->findAll();
+        // Ambil input pencarian & sorting dari query string
+        $search = $this->request->getGet('search');
+        $sort   = $this->request->getGet('sort');
 
+        // Query builder
+        $builder = $productModel->select('products.*')
+            ->groupBy('products.id');
+
+        // Filter pencarian
+        if (!empty($search)) {
+            $builder->groupStart()
+                ->like('products.product_name', $search)
+                ->orLike('products.category', $search)
+                ->groupEnd();
+        }
+
+        // Sorting
+        switch ($sort) {
+            case 'az':
+                $builder->orderBy('products.product_name', 'ASC');
+                break;
+            case 'za':
+                $builder->orderBy('products.product_name', 'DESC');
+                break;
+            case 'low_high':
+                $builder->orderBy('products.price', 'ASC');
+                break;
+            case 'high_low':
+                $builder->orderBy('products.price', 'DESC');
+                break;
+            default:
+                $builder->orderBy('products.id', 'DESC'); // default: terbaru
+        }
+
+        $products = $builder->findAll();
+
+        // Tambah relasi gambar
         foreach ($products as &$product) {
             $product['images'] = $imageModel->where('product_id', $product['id'])->findAll();
         }
 
-        $data['products'] = $products;
-
-        return view('admin/product/index', $data);
+        return view('admin/product/index', [
+            'products' => $products,
+            'search'   => $search,
+            'sort'     => $sort
+        ]);
     }
+
 
     public function create()
     {

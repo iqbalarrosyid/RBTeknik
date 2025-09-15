@@ -26,6 +26,35 @@
     </section>
 </div>
 
+<section class="py-5 bg-white">
+    <div class="container">
+        <h2 class="text-center section-title">Filosofi Kami</h2>
+        <div class="row text-center g-4">
+            <div class="col-md-4">
+                <div class="p-4">
+                    <i class="bi bi-gem fs-1 text-dark"></i>
+                    <h4 class="fw-bold my-3">Kualitas Terbaik</h4>
+                    <p class="text-muted">Kami hanya menggunakan material kayu pilihan yang telah melewati proses seleksi ketat untuk menjamin kekuatan dan daya tahan produk.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-4">
+                    <i class="bi bi-rulers fs-1 text-dark"></i>
+                    <h4 class="fw-bold my-3">Desain Kustom</h4>
+                    <p class="text-muted">Setiap klien adalah unik. Kami bekerja sama dengan Anda untuk mewujudkan furnitur impian yang sesuai dengan gaya dan kebutuhan Anda.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-4">
+                    <i class="bi bi-hand-thumbs-up fs-1 text-dark"></i>
+                    <h4 class="fw-bold my-3">Sentuhan Tangan Ahli</h4>
+                    <p class="text-muted">Dikerjakan oleh para pengrajin berpengalaman, setiap detail furnitur kami mendapatkan perhatian penuh untuk hasil akhir yang sempurna.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="container py-5">
     <h2 class="text-center section-title">Produk Unggulan</h2>
     <div class="row g-4">

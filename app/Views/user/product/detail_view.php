@@ -68,7 +68,7 @@
                 <?php
                 $pesan_wa = "Halo, saya tertarik dengan produk '" . $product['product_name'] . "'. Bisa minta info lebih lanjut?";
                 ?>
-                <a href="https://wa.me/6281234567890?text=<?= urlencode($pesan_wa) ?>"
+                <a href="https://wa.me/6283894056521?text=<?= urlencode($pesan_wa) ?>"
                     target="_blank"
                     class="btn btn-dark btn-lg px-5 py-3 fw-bold">
                     <i class="bi bi-whatsapp me-2"></i>Pesan via WhatsApp
