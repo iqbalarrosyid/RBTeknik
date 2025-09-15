@@ -44,4 +44,16 @@ class ProductModel extends Model
 
         return $product;
     }
+
+    public function getLatestProducts($limit = 3)
+    {
+        return $this->db->table('products p')
+            ->select('p.*, MIN(pi.image_url) as image_url')
+            ->join('product_images pi', 'pi.product_id = p.id', 'left')
+            ->groupBy('p.id')
+            ->orderBy('p.id', 'DESC')
+            ->limit($limit)
+            ->get()
+            ->getResultArray();
+    }
 }

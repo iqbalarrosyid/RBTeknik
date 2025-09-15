@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
     <style>
         /* --- General & Typography --- */
@@ -153,6 +154,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
+
         .product-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
@@ -181,20 +183,54 @@
         }
 
         /* --- Page Sections & Footer --- */
-        .footer {
-            background-color: #ffffff;
+        .main-footer {
+            background-color: #212529;
+            /* Latar belakang gelap */
+            color: #adb5bd;
+            /* Warna teks lebih lembut */
         }
 
-        .social-icons a {
-            color: #495057;
-            font-size: 1.25rem;
-            margin: 0 10px;
+        .main-footer .footer-title {
+            font-family: 'Montserrat', sans-serif;
+            color: #ffffff;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .main-footer a {
+            color: #adb5bd;
+            text-decoration: none;
             transition: color 0.3s ease;
         }
 
-        .social-icons a:hover {
-            color: #212529;
+        .main-footer a:hover {
+            color: #ffffff;
         }
+
+        .main-footer .list-unstyled li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-bottom {
+            background-color: #1a1e21;
+            border-top: 1px solid #343a40;
+        }
+
+        .newsletter-form .form-control {
+            background-color: #343a40;
+            border-color: #495057;
+            color: #fff;
+        }
+
+        .newsletter-form .form-control::placeholder {
+            color: #6c757d;
+        }
+
+        .newsletter-form .btn {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
 
         /* --- Floating Widgets --- */
         .whatsapp-float {
@@ -219,6 +255,15 @@
             transform: scale(1.1);
             color: #FFF;
         }
+
+        .truncate-text {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            /* maksimal 2 baris */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
     </style>
 </head>
 
@@ -226,7 +271,9 @@
 
     <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-light fixed-top py-3">
         <div class="container-fluid px-4">
-            <a class="navbar-brand fw-bold fs-4" href="<?= base_url('/'); ?>">RB Teknik</a>
+            <a class="navbar-brand" href="<?= base_url('/'); ?>">
+                <img src="<?= base_url('favicon.png') ?>" alt="RB Teknik Logo" height="35">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -242,6 +289,7 @@
                     <li class="nav-item mx-2"><a class="nav-link <?= ($current_page == '') ? 'active' : '' ?>" href="<?= base_url('/'); ?>">Home</a></li>
                     <li class="nav-item mx-2"><a class="nav-link <?= ($current_page == 'about') ? 'active' : '' ?>" href="<?= base_url('/about'); ?>">About</a></li>
                     <li class="nav-item mx-2"><a class="nav-link <?= ($current_page == 'products' || $current_page == 'product') ? 'active' : '' ?>" href="<?= base_url('/products'); ?>">Products</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link <?= ($current_page == 'faq') ? 'active' : '' ?>" href="<?= base_url('/faq'); ?>">FAQ</a></li>
                     <li class="nav-item ms-3"><a class="btn btn-dark rounded-pill px-4" href="<?= base_url('/contact'); ?>">Contact</a></li>
                 </ul>
             </div>
@@ -252,17 +300,55 @@
         <?= $this->renderSection('content') ?>
     </main>
 
-    <footer class="footer text-center py-4 mt-5 border-top">
-        <div class="container">
-            <div class="social-icons mb-3">
-                <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-                <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-                <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
-                <a href="#" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+    <footer class="main-footer pt-5 pb-4">
+        <div class="container text-center text-md-start">
+            <div class="row">
+
+                <div class="col-md-6 col-lg-3 mx-auto mt-3">
+                    <h5 class="footer-title">RB Teknik</h5>
+                    <p>
+                        Sebuah dedikasi untuk menciptakan furnitur berkualitas tinggi yang memadukan keindahan, fungsi, dan daya tahan untuk setiap ruang.
+                    </p>
+                </div>
+
+                <div class="col-md-6 col-lg-2 mx-auto mt-3">
+                    <h5 class="footer-title">Navigasi</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="<?= base_url('/') ?>">Home</a></li>
+                        <li><a href="<?= base_url('/about') ?>">About</a></li>
+                        <li><a href="<?= base_url('/products') ?>">Products</a></li>
+                        <li><a href="<?= base_url('/faq') ?>">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-6 col-lg-3 mx-auto mt-3">
+                    <h5 class="footer-title">Kontak</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-geo-alt-fill me-2"></i> Ngrancah, Sriharjo, Kec. Imogiri, Kabupaten Bantul, Daerah Istimewa Yogyakarta 55782</li>
+                        <li><i class="bi bi-envelope-fill me-2"></i> rbteknik@gmail.com</li>
+                        <li><i class="bi bi-telephone-fill me-2"></i> +62 838 9405 6521</li>
+                    </ul>
+                </div>
+
             </div>
-            <p class="text-muted mb-0">&copy; <?= date('Y'); ?> Elegan Furnitur - RB Teknik. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <div class="footer-bottom text-center py-3">
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <p class="text-white-50 mb-2 mb-md-0">
+                    &copy; <?= date('Y'); ?> RB Teknik. All Rights Reserved.
+                </p>
+                <div class="social-icons">
+                    <a href="#" class="text-white-50 mx-2" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="text-white-50 mx-2" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-white-50 mx-2" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                    <a href="#" class="text-white-50 mx-2" aria-label="Shopee"><i class="bi bi-shop"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <?php
     $pesan_whatsapp = "Halo, saya tertarik dengan produk furnitur dari RB Teknik. Bisa minta informasi lebih lanjut?";
@@ -300,6 +386,17 @@
             } else {
                 console.error("Elemen navbar (mainNavbar) atau menu (navbarNav) tidak ditemukan.");
             }
+        });
+    </script>
+
+    <!-- AOS JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            AOS.init({
+                duration: 1000, // durasi animasi (ms)
+                once: true // animasi hanya jalan sekali
+            });
         });
     </script>
 

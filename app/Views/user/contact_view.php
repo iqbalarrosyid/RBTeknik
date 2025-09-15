@@ -12,7 +12,7 @@
 <div class="container">
     <div class="row g-5">
 
-        <div class="col-lg-5">
+        <div class="col-lg-12">
             <div class="p-4 bg-white rounded shadow-sm h-100">
                 <h4 class="fw-bold mb-4">Informasi Kontak</h4>
 
@@ -21,7 +21,7 @@
                         <i class="bi bi-geo-alt-fill fs-4 text-dark me-3"></i>
                         <div>
                             <h6 class="fw-bold mb-0">Alamat Workshop</h6>
-                            <p class="text-muted mb-0">393R+5XP, Ngrancah, Sriharjo, Kec. Imogiri, Kabupaten Bantul, Daerah Istimewa Yogyakarta 55782</p>
+                            <p class="text-muted mb-0">Ngrancah, Sriharjo, Kec. Imogiri, Kabupaten Bantul, Daerah Istimewa Yogyakarta 55782</p>
                         </div>
                     </li>
                     <li class="d-flex mb-3">

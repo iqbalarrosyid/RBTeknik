@@ -43,7 +43,7 @@
                                 style="aspect-ratio: 1/1; object-fit: cover;">
                         </a>
                         <div class="card-body text-center d-flex flex-column">
-                            <h5 class="card-title mt-2">
+                            <h5 class="card-title mt-2 truncate-text">
                                 <a href="<?= base_url('product/' . $product['id']) ?>" class="text-decoration-none text-dark"><?= esc($product['product_name']) ?></a>
                             </h5>
                             <p class="card-text text-muted mb-1"><?= esc($product['category']) ?></p>
