@@ -101,10 +101,16 @@
     <div class="container">
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
             <h2 class="fw-bold text-dark mb-0"><i class="bi bi-box-seam me-2"></i> Daftar Produk</h2>
-            <a href="<?= base_url('admin/product/create'); ?>" class="btn btn-dark fw-semibold">
-                <i class="bi bi-plus-lg me-1"></i> Tambah Produk
-            </a>
+            <div class="d-flex gap-2">
+                <a href="<?= base_url('admin/product/create'); ?>" class="btn btn-dark fw-semibold">
+                    <i class="bi bi-plus-lg me-1"></i> Tambah Produk
+                </a>
+                <a href="<?= base_url('logout'); ?>" class="btn btn-outline-danger fw-semibold">
+                    <i class="bi bi-box-arrow-right me-1"></i> Logout
+                </a>
+            </div>
         </div>
+
 
         <div class="card shadow-sm border-0 mb-4">
             <div class="card-body">
@@ -198,13 +204,13 @@
                     </table>
                 </div>
             </div>
-            <?php if (isset($pager) && $pager->getPageCount() > 1): ?>
-                <div class="card-footer bg-white">
-                    <?= $pager->links('default', 'bootstrap_5_pagination') ?>
-                </div>
-            <?php endif; ?>
         </div>
+        <br>
+        <?= $pager->links('products', 'bootstrap_5_pagination') ?>
+
     </div>
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>

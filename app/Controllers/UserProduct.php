@@ -19,9 +19,10 @@ class UserProduct extends BaseController
         $sort   = $this->request->getGet('sort');
 
         // Query dasar ambil produk + gambar
-        $builder = $productModel->select('products.*, MIN(product_images.image_url) as image_url')
+        $builder = $productModel->select('products.*, MIN(product_images.image_url) as product_image')
             ->join('product_images', 'product_images.product_id = products.id', 'left')
             ->groupBy('products.id');
+
 
         // Filter pencarian
         if (!empty($search)) {
@@ -49,14 +50,19 @@ class UserProduct extends BaseController
                 $builder->orderBy('products.id', 'DESC'); // default terbaru
         }
 
-        $products = $builder->get()->getResultArray();
+        // Gunakan paginate() agar $pager tersedia
+        $perPage = 12; // jumlah produk per halaman
+        $products = $builder->paginate($perPage, 'products');
+        $pager    = $builder->pager; // ambil pager
 
         return view('user/product/list_view', [
             'products' => $products,
+            'pager'    => $pager,
             'search'   => $search,
             'sort'     => $sort
         ]);
     }
+
 
 
     /**

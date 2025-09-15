@@ -12,10 +12,15 @@ $routes->get('/product/(:num)', 'UserProduct::detail/$1');
 $routes->get('/faq', 'Home::faq');
 $routes->get('/contact', 'Home::contact');
 
+$routes->get('/login', 'Auth::login');
+$routes->post('/login', 'Auth::doLogin');
+$routes->get('/logout', 'Auth::logout');
 
-$routes->get('admin/', 'Product::index');
-$routes->get('admin/product/create', 'Product::create');
-$routes->post('admin/product/store', 'Product::store');
-$routes->get('admin/product/edit/(:num)', 'Product::edit/$1');
-$routes->post('admin/product/update/(:num)', 'Product::update/$1');
-$routes->post('admin/product/delete/(:num)', 'Product::delete/$1');
+$routes->group('admin', ['filter' => 'auth:admin'], function ($routes) {
+    $routes->get('/', 'Product::index');
+    $routes->get('product/create', 'Product::create');
+    $routes->post('product/store', 'Product::store');
+    $routes->get('product/edit/(:num)', 'Product::edit/$1');
+    $routes->post('product/update/(:num)', 'Product::update/$1');
+    $routes->post('product/delete/(:num)', 'Product::delete/$1');
+});

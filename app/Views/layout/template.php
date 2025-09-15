@@ -15,6 +15,11 @@
 
     <style>
         /* --- General & Typography --- */
+        html,
+        body {
+            overflow-x: hidden;
+        }
+
         body {
             font-family: 'Lato', sans-serif;
             background-color: #f8f9fa;
@@ -291,6 +296,12 @@
                     <li class="nav-item mx-2"><a class="nav-link <?= ($current_page == 'products' || $current_page == 'product') ? 'active' : '' ?>" href="<?= base_url('/products'); ?>">Products</a></li>
                     <li class="nav-item mx-2"><a class="nav-link <?= ($current_page == 'faq') ? 'active' : '' ?>" href="<?= base_url('/faq'); ?>">FAQ</a></li>
                     <li class="nav-item ms-3"><a class="btn btn-dark rounded-pill px-4" href="<?= base_url('/contact'); ?>">Contact</a></li>
+                    <li class="nav-item ms-2">
+                        <a class="btn btn-outline-dark rounded-pill px-4 d-flex align-items-center" href="<?= base_url('/admin'); ?>">
+                            <i class="bi bi-person-fill me-1"></i> Login
+                        </a>
+                    </li>
+
                 </ul>
             </div>
         </div>

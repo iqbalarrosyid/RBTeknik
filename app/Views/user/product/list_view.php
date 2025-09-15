@@ -31,16 +31,19 @@
         </form>
     </div>
 
+
+
     <?php if (!empty($products)): ?>
         <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
             <?php foreach ($products as $product): ?>
                 <div class="col">
                     <div class="card product-card h-100 shadow-sm border-0">
                         <a href="<?= base_url('product/' . $product['id']) ?>">
-                            <img src="<?= base_url('uploads/products/' . esc($product['image_url'] ?? 'default.jpg')) ?>"
+                            <img src="<?= base_url('uploads/products/' . esc($product['product_image'] ?? 'default.jpg')) ?>"
                                 class="card-img-top"
                                 alt="<?= esc($product['product_name']) ?>"
                                 style="aspect-ratio: 1/1; object-fit: cover;">
+
                         </a>
                         <div class="card-body text-center d-flex flex-column">
                             <h5 class="card-title mt-2 truncate-text">
@@ -62,7 +65,6 @@
         </div>
 
 
-
     <?php else: ?>
         <div class="text-center py-5">
             <h4 class="text-muted">Produk tidak ditemukan</h4>
@@ -70,6 +72,11 @@
             <a href="<?= base_url('products') ?>" class="btn btn-dark mt-3">Tampilkan Semua Produk</a>
         </div>
     <?php endif; ?>
+    <br>
+
+    <?= $pager->links('products', 'bootstrap_5_pagination') ?>
+
 </section>
+
 
 <?= $this->endSection() ?>

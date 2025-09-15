@@ -90,7 +90,7 @@
     <div class="container">
 
         <div class="mb-4">
-            <a href="<?= base_url('admin/product'); ?>" class="text-decoration-none text-dark">
+            <a href="<?= base_url('admin/'); ?>" class="text-decoration-none text-dark">
                 <i class="bi bi-arrow-left"></i> Kembali ke Daftar Produk
             </a>
         </div>

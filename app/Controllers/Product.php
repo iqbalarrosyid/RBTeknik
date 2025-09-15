@@ -17,9 +17,8 @@ class Product extends Controller
         $search = $this->request->getGet('search');
         $sort   = $this->request->getGet('sort');
 
-        // Query builder
-        $builder = $productModel->select('products.*')
-            ->groupBy('products.id');
+        // Query builder dasar
+        $builder = $productModel->select('products.*')->groupBy('products.id');
 
         // Filter pencarian
         if (!empty($search)) {
@@ -47,7 +46,10 @@ class Product extends Controller
                 $builder->orderBy('products.id', 'DESC'); // default: terbaru
         }
 
-        $products = $builder->findAll();
+        // Pagination
+        $perPage = 10; // jumlah produk per halaman
+        $products = $builder->paginate($perPage, 'products'); // ambil data paginasi
+        $pager    = $builder->pager; // ambil pager untuk view
 
         // Tambah relasi gambar
         foreach ($products as &$product) {
@@ -56,10 +58,12 @@ class Product extends Controller
 
         return view('admin/product/index', [
             'products' => $products,
+            'pager'    => $pager,
             'search'   => $search,
             'sort'     => $sort
         ]);
     }
+
 
 
     public function create()
