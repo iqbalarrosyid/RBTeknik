@@ -119,11 +119,22 @@
                         <div class="col-md-8">
                             <div class="mb-3">
                                 <label for="product_name" class="form-label">Nama Produk</label>
-                                <input type="text" class="form-control" id="product_name" name="product_name" value="<?= esc($product['product_name']) ?>" required>
+                                <input type="text" class="form-control" id="product_name" name="product_name"
+                                    value="<?= esc($product['product_name']) ?>" required>
                             </div>
                             <div class="mb-3">
                                 <label for="description" class="form-label">Deskripsi</label>
                                 <textarea class="form-control" id="description" name="description" rows="5"><?= esc($product['description']) ?></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="bahan" class="form-label">Bahan</label>
+                                <input type="text" class="form-control" id="bahan" name="bahan"
+                                    value="<?= esc($product['bahan']) ?>">
+                            </div>
+                            <div class="mb-3">
+                                <label for="warna" class="form-label">Warna</label>
+                                <input type="text" class="form-control" id="warna" name="warna"
+                                    value="<?= esc($product['warna']) ?>">
                             </div>
                         </div>
 
@@ -132,20 +143,39 @@
                                 <label for="price" class="form-label">Harga</label>
                                 <div class="input-group">
                                     <span class="input-group-text">Rp</span>
-                                    <input type="number" class="form-control" id="price" name="price" value="<?= esc($product['price']) ?>" step="1000" required>
+                                    <input type="number" class="form-control" id="price" name="price"
+                                        value="<?= esc($product['price']) ?>" step="1000" required>
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="category" class="form-label">Kategori</label>
                                 <select class="form-select" id="category" name="category" required>
-                                    <option selected disabled value="">Pilih kategori...</option>
-                                    <option value="Kursi">Kursi</option>
-                                    <option value="Meja">Meja</option>
-                                    <option value="Aksesoris">Aksesoris</option>
+                                    <option disabled value="">Pilih kategori...</option>
+                                    <option value="Kursi" <?= $product['category'] === 'Kursi' ? 'selected' : '' ?>>Kursi</option>
+                                    <option value="Meja" <?= $product['category'] === 'Meja' ? 'selected' : '' ?>>Meja</option>
+                                    <option value="Aksesoris" <?= $product['category'] === 'Aksesoris' ? 'selected' : '' ?>>Aksesoris</option>
                                 </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Dimensi (cm)</label>
+                                <div class="row g-2">
+                                    <div class="col">
+                                        <input type="number" class="form-control" name="panjang" placeholder="Panjang"
+                                            value="<?= esc($product['panjang']) ?>">
+                                    </div>
+                                    <div class="col">
+                                        <input type="number" class="form-control" name="lebar" placeholder="Lebar"
+                                            value="<?= esc($product['lebar']) ?>">
+                                    </div>
+                                    <div class="col">
+                                        <input type="number" class="form-control" name="tinggi" placeholder="Tinggi"
+                                            value="<?= esc($product['tinggi']) ?>">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+
 
                     <hr class="my-4">
 

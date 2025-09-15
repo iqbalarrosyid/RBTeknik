@@ -13,7 +13,12 @@ class ProductModel extends Model
         'product_name',
         'description',
         'price',
-        'category'
+        'category',
+        'bahan',
+        'warna',
+        'panjang',
+        'lebar',
+        'tinggi'
     ];
 
     // ambil produk + gambar pertama
@@ -26,7 +31,6 @@ class ProductModel extends Model
             ->get()
             ->getResultArray();
     }
-
 
     // ambil detail produk + semua gambar
     public function getProductWithImages($id)

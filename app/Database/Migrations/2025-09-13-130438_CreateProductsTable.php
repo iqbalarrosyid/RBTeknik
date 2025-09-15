@@ -37,7 +37,35 @@ class CreateProductsTable extends Migration
                 'constraint' => '50',
                 'null'       => true,
             ],
+
+            // 🔽 kolom baru
+            'bahan' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '100',
+                'null'       => true,
+            ],
+            'warna' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '50',
+                'null'       => true,
+            ],
+            'panjang' => [
+                'type'       => 'DECIMAL',
+                'constraint' => '6,2', // misal cm, bisa 9999.99
+                'null'       => true,
+            ],
+            'lebar' => [
+                'type'       => 'DECIMAL',
+                'constraint' => '6,2',
+                'null'       => true,
+            ],
+            'tinggi' => [
+                'type'       => 'DECIMAL',
+                'constraint' => '6,2',
+                'null'       => true,
+            ],
         ]);
+
         $this->forge->addKey('id', true);
         $this->forge->createTable('products');
     }

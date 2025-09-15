@@ -12,7 +12,7 @@ $routes->get('/product/(:num)', 'UserProduct::detail/$1');
 $routes->get('/contact', 'Home::contact');
 
 
-$routes->get('admin/product', 'Product::index');
+$routes->get('admin/', 'Product::index');
 $routes->get('admin/product/create', 'Product::create');
 $routes->post('admin/product/store', 'Product::store');
 $routes->get('admin/product/edit/(:num)', 'Product::edit/$1');

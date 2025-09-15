@@ -81,24 +81,35 @@
             box-shadow: none !important;
         }
 
+        /* Ganti seluruh blok @media Anda dengan ini */
+
         /* --- Mobile Navigation Overlay --- */
         @media (max-width: 991.98px) {
 
+            /* Targetkan .navbar-collapse saat sedang transisi (collapsing) dan saat sudah tampil (show) */
             .navbar-collapse.show,
             .navbar-collapse.collapsing {
                 position: fixed;
                 top: 0;
                 left: 0;
-                width: 100vw;
-                height: 100vh;
-                background: #ffffff;
+                width: 100%;
+                /* Menggunakan 100% lebih aman dari 100vw */
+                height: 100%;
+                /* Menggunakan 100% lebih aman dari 100vh */
+                background: rgba(255, 255, 255, 0.98);
+                /* Latar sedikit transparan + efek blur */
+                backdrop-filter: blur(5px);
+                -webkit-backdrop-filter: blur(5px);
                 z-index: 1050;
+
+                /* Menengahkan semua item menu di layar */
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 text-align: center;
             }
 
+            /* Sisa styling di bawah ini tetap sama, pastikan ada */
             .navbar-collapse .navbar-nav {
                 width: 100%;
                 flex-direction: column;

@@ -39,10 +39,25 @@
 
             <h5 class="fw-bold">Spesifikasi Utama</h5>
             <ul class="list-unstyled lead fs-6">
-                <li class="mb-2"><i class="bi bi-box-seam me-2 text-muted"></i>Bahan: Kayu Jati Solid</li>
-                <li class="mb-2"><i class="bi bi-palette me-2 text-muted"></i>Finishing: Natural Doff</li>
-                <li class="mb-2"><i class="bi bi-rulers me-2 text-muted"></i>Dimensi: 120 x 60 x 75 cm</li>
+                <li class="mb-2">
+                    <i class="bi bi-box-seam me-2 text-muted"></i>
+                    Bahan: <?= !empty($product['bahan']) ? esc($product['bahan']) : '-' ?>
+                </li>
+                <li class="mb-2">
+                    <i class="bi bi-palette me-2 text-muted"></i>
+                    Warna: <?= !empty($product['warna']) ? esc($product['warna']) : '-' ?>
+                </li>
+                <li class="mb-2">
+                    <i class="bi bi-rulers me-2 text-muted"></i>
+                    Dimensi:
+                    <?php if (!empty($product['panjang']) && !empty($product['lebar']) && !empty($product['tinggi'])): ?>
+                        <?= esc($product['panjang']) ?> x <?= esc($product['lebar']) ?> x <?= esc($product['tinggi']) ?> cm
+                    <?php else: ?>
+                        -
+                    <?php endif; ?>
+                </li>
             </ul>
+
 
             <hr class="my-4">
 

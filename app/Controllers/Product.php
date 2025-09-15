@@ -50,6 +50,11 @@ class Product extends Controller
             'description'  => $this->request->getPost('description'),
             'price'        => $this->request->getPost('price'),
             'category'     => $this->request->getPost('category'),
+            'bahan'        => $this->request->getPost('bahan'),
+            'warna'        => $this->request->getPost('warna'),
+            'panjang'      => $this->request->getPost('panjang'),
+            'lebar'        => $this->request->getPost('lebar'),
+            'tinggi'       => $this->request->getPost('tinggi'),
         ]);
 
         // Ambil semua file foto
@@ -59,7 +64,7 @@ class Product extends Controller
             foreach ($images['images'] as $image) {
                 if ($image->isValid() && !$image->hasMoved()) {
                     $newName = $image->getRandomName();
-                    $image->move('uploads/products', $newName);
+                    $image->move(FCPATH . 'uploads/products', $newName);
 
                     $imageModel->insert([
                         'product_id' => $productId,
@@ -69,13 +74,13 @@ class Product extends Controller
             }
         }
 
-        return redirect()->to('admin/product')->with('success', 'Produk berhasil ditambahkan!');
+        return redirect()->to('admin/')->with('success', 'Produk berhasil ditambahkan!');
     }
 
     public function edit($id)
     {
-        $productModel = new ProductModel();
-        $productImageModel   = new ProductImageModel();
+        $productModel      = new ProductModel();
+        $productImageModel = new ProductImageModel();
 
         $product = $productModel->find($id);
         $images  = $productImageModel->where('product_id', $id)->findAll();
@@ -90,7 +95,6 @@ class Product extends Controller
         ]);
     }
 
-
     public function update($id)
     {
         $productModel = new ProductModel();
@@ -102,6 +106,11 @@ class Product extends Controller
             'description'  => $this->request->getPost('description'),
             'price'        => $this->request->getPost('price'),
             'category'     => $this->request->getPost('category'),
+            'bahan'        => $this->request->getPost('bahan'),
+            'warna'        => $this->request->getPost('warna'),
+            'panjang'      => $this->request->getPost('panjang'),
+            'lebar'        => $this->request->getPost('lebar'),
+            'tinggi'       => $this->request->getPost('tinggi'),
         ];
         $productModel->update($id, $data);
 
@@ -111,7 +120,7 @@ class Product extends Controller
             foreach ($deleteImages as $imgId) {
                 $img = $imageModel->find($imgId);
                 if ($img) {
-                    $filePath = FCPATH . $img['image_url'];
+                    $filePath = FCPATH . 'uploads/products/' . $img['image_url'];
                     if (file_exists($filePath)) {
                         unlink($filePath);
                     }
@@ -128,7 +137,7 @@ class Product extends Controller
                     $newName = $img->getRandomName();
                     $img->move(FCPATH . 'uploads/products', $newName);
 
-                    $imageModel->save([
+                    $imageModel->insert([
                         'product_id' => $id,
                         'image_url'  => $newName,
                     ]);
@@ -136,21 +145,31 @@ class Product extends Controller
             }
         }
 
-        return redirect()->to('admin/product')->with('success', 'Produk berhasil diperbarui!');
+        return redirect()->to('admin/')->with('success', 'Produk berhasil diperbarui!');
     }
-
 
     public function delete($id)
     {
         $productModel = new ProductModel();
+        $imageModel   = new ProductImageModel();
+
         $product = $productModel->find($id);
 
-        if ($product && $product['image_url'] && file_exists('uploads/' . $product['image_url'])) {
-            unlink('uploads/' . $product['image_url']);
+        if ($product) {
+            // Hapus semua gambar produk
+            $images = $imageModel->where('product_id', $id)->findAll();
+            foreach ($images as $img) {
+                $filePath = FCPATH . 'uploads/products/' . $img['image_url'];
+                if (file_exists($filePath)) {
+                    unlink($filePath);
+                }
+                $imageModel->delete($img['id']);
+            }
+
+            // Hapus produk
+            $productModel->delete($id);
         }
 
-        $productModel->delete($id);
-
-        return redirect()->to('admin/product')->with('success', 'Produk berhasil dihapus!');
+        return redirect()->to('admin/')->with('success', 'Produk berhasil dihapus!');
     }
 }

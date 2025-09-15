@@ -62,7 +62,7 @@
     <div class="container">
 
         <div class="mb-4">
-            <a href="<?= base_url('admin/product'); ?>" class="text-decoration-none text-dark">
+            <a href="<?= base_url('admin/'); ?>" class="text-decoration-none text-dark">
                 <i class="bi bi-arrow-left"></i> Kembali ke Daftar Produk
             </a>
         </div>
@@ -91,11 +91,19 @@
                         <div class="col-md-8">
                             <div class="mb-3">
                                 <label for="product_name" class="form-label">Nama Produk</label>
-                                <input type="text" class="form-control" id="product_name" name="product_name" required>
+                                <input type="text" class="form-control" id="product_name" name="product_name" value="<?= old('product_name'); ?>" required>
                             </div>
                             <div class="mb-3">
                                 <label for="description" class="form-label">Deskripsi</label>
-                                <textarea class="form-control" id="description" name="description" rows="5"></textarea>
+                                <textarea class="form-control" id="description" name="description" rows="5"><?= old('description'); ?></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="bahan" class="form-label">Bahan</label>
+                                <input type="text" class="form-control" id="bahan" name="bahan" value="<?= old('bahan'); ?>">
+                            </div>
+                            <div class="mb-3">
+                                <label for="warna" class="form-label">Warna</label>
+                                <input type="text" class="form-control" id="warna" name="warna" value="<?= old('warna'); ?>">
                             </div>
                         </div>
 
@@ -104,20 +112,35 @@
                                 <label for="price" class="form-label">Harga</label>
                                 <div class="input-group">
                                     <span class="input-group-text">Rp</span>
-                                    <input type="number" class="form-control" id="price" name="price" step="1000" required>
+                                    <input type="number" class="form-control" id="price" name="price" step="1000" value="<?= old('price'); ?>" required>
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="category" class="form-label">Kategori</label>
                                 <select class="form-select" id="category" name="category" required>
                                     <option selected disabled value="">Pilih kategori...</option>
-                                    <option value="Kursi">Kursi</option>
-                                    <option value="Meja">Meja</option>
-                                    <option value="Aksesoris">Aksesoris</option>
+                                    <option value="Kursi" <?= old('category') === 'Kursi' ? 'selected' : '' ?>>Kursi</option>
+                                    <option value="Meja" <?= old('category') === 'Meja' ? 'selected' : '' ?>>Meja</option>
+                                    <option value="Aksesoris" <?= old('category') === 'Aksesoris' ? 'selected' : '' ?>>Aksesoris</option>
                                 </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Dimensi (cm)</label>
+                                <div class="row g-2">
+                                    <div class="col">
+                                        <input type="number" class="form-control" name="panjang" placeholder="Panjang" value="<?= old('panjang'); ?>">
+                                    </div>
+                                    <div class="col">
+                                        <input type="number" class="form-control" name="lebar" placeholder="Lebar" value="<?= old('lebar'); ?>">
+                                    </div>
+                                    <div class="col">
+                                        <input type="number" class="form-control" name="tinggi" placeholder="Tinggi" value="<?= old('tinggi'); ?>">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+
 
                     <hr class="my-4">
 
