@@ -3,114 +3,150 @@
 <?= $this->section('content') ?>
 
 <div class="container py-5">
+    <nav aria-label="breadcrumb" class="mb-4" data-aos="fade-down">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="<?= base_url('/') ?>">Home</a></li>
+            <li class="breadcrumb-item"><a href="<?= base_url('/products') ?>">Produk</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><?= esc($product['product_name']) ?></li>
+        </ol>
+    </nav>
+
     <div class="row g-5">
-        <div class="col-lg-6">
-            <div class="mb-3">
-                <img src="<?= base_url('uploads/products/' . esc($images[0]['image_url'] ?? 'default.jpg')) ?>" class="img-fluid rounded shadow-sm w-100"
+        <div class="col-lg-7" data-aos="fade-right">
+            <div class="mb-3 position-relative">
+                <img src="<?= base_url('uploads/products/' . esc($images[0]['image_url'] ?? 'default.jpg')) ?>"
+                    class="img-fluid rounded shadow-sm w-100"
                     id="main-product-image"
                     alt="<?= esc($product['product_name']) ?>"
-                    style="cursor: zoom-in; aspect-ratio: 1/1; object-fit: cover;"
-                    onclick="openImageModal(this.src)">
+                    style="aspect-ratio: 4/3; object-fit: cover;">
+                <div class="zoom-overlay">
+                    <i class="bi bi-zoom-in"></i>
+                </div>
             </div>
 
             <?php if (!empty($images) && count($images) > 1): ?>
-                <div class="d-flex flex-wrap gap-2">
-                    <?php foreach ($images as $index => $image): ?>
-                        <div class="thumbnail-wrapper">
-                            <img src="<?= base_url('uploads/products/' . esc($image['image_url'])) ?>"
-                                class="rounded product-thumbnail <?= $index === 0 ? 'active' : '' ?>"
-                                onclick="changeImage(this)"
-                                alt="Thumbnail <?= $index + 1 ?>">
-                        </div>
-                    <?php endforeach; ?>
+                <div class="splide thumbnail-slider">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            <?php foreach ($images as $image): ?>
+                                <li class="splide__slide">
+                                    <img src="<?= base_url('uploads/products/' . esc($image['image_url'])) ?>"
+                                        class="rounded product-thumbnail"
+                                        alt="Thumbnail">
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
                 </div>
             <?php endif; ?>
-
         </div>
 
-        <div class="col-lg-6">
+        <div class="col-lg-5" data-aos="fade-left" data-aos-delay="200">
             <h1 class="display-5 fw-bold"><?= esc($product['product_name']) ?></h1>
-            <p class="text-muted fs-5 mb-3">Kategori: <span class="fw-semibold text-dark"><?= esc($product['category']) ?></span></p>
+            <p class="text-muted fs-5 mb-3">
+                Kategori: <a href="<?= base_url('products?category=' . urlencode($product['category'])) ?>" class="text-decoration-none text-dark fw-semibold"><?= esc($product['category']) ?></a>
+            </p>
             <p class="display-4 fw-bold text-dark mb-4">
                 Rp <?= number_format($product['price'], 0, ',', '.') ?>
             </p>
 
-            <hr class="my-4">
+            <div class="d-flex align-items-center mb-4">
+                <button type="button" id="copyLinkBtn" class="btn btn-outline-dark me-2" data-bs-toggle="tooltip" title="Salin link produk">
+                    <i class="bi bi-link-45deg"></i>
+                </button>
+                <div class="dropdown">
+                    <button class="btn btn-outline-dark" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Bagikan">
+                        <i class="bi bi-share-fill"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="https://api.whatsapp.com/send?text=<?= urlencode(esc($product['product_name']) . ' ' . current_url()) ?>" target="_blank">WhatsApp</a></li>
+                        <li><a class="dropdown-item" href="https://www.facebook.com/sharer/sharer.php?u=<?= urlencode(current_url()) ?>" target="_blank">Facebook</a></li>
+                        <li><a class="dropdown-item" href="https://twitter.com/intent/tweet?url=<?= urlencode(current_url()) ?>&text=<?= urlencode(esc($product['product_name'])) ?>" target="_blank">Twitter</a></li>
+                    </ul>
+                </div>
+            </div>
 
-            <h5 class="fw-bold">Spesifikasi Utama</h5>
-            <ul class="list-unstyled lead fs-6">
-                <li class="mb-2">
-                    <i class="bi bi-box-seam me-2 text-muted"></i>
-                    Bahan: <?= !empty($product['bahan']) ? esc($product['bahan']) : '-' ?>
-                </li>
-                <li class="mb-2">
-                    <i class="bi bi-palette me-2 text-muted"></i>
-                    Warna: <?= !empty($product['warna']) ? esc($product['warna']) : '-' ?>
-                </li>
-                <li class="mb-2">
-                    <i class="bi bi-rulers me-2 text-muted"></i>
-                    Dimensi:
-                    <?php if (!empty($product['panjang']) && !empty($product['lebar']) && !empty($product['tinggi'])): ?>
-                        <?= esc($product['panjang']) ?> x <?= esc($product['lebar']) ?> x <?= esc($product['tinggi']) ?> cm
-                    <?php else: ?>
-                        -
-                    <?php endif; ?>
-                </li>
-            </ul>
-
-
-            <hr class="my-4">
-
-            <h5 class="fw-bold">Deskripsi Produk</h5>
-            <p class="text-secondary"><?= nl2br(esc($product['description'])) ?></p>
-
-            <div class="mt-5">
-                <?php
-                $pesan_wa = "Halo, saya tertarik dengan produk '" . $product['product_name'] . "'. Bisa minta info lebih lanjut?";
-                ?>
+            <?php
+            $pesan_wa = "Halo, saya tertarik dengan produk '" . $product['product_name'] . "'. Bisa minta info lebih lanjut?";
+            ?>
+            <div class="d-grid">
                 <a href="https://wa.me/6283894056521?text=<?= urlencode($pesan_wa) ?>"
                     target="_blank"
-                    class="btn btn-dark btn-lg px-5 py-3 fw-bold">
+                    class="btn btn-dark btn-lg py-3 fw-bold">
                     <i class="bi bi-whatsapp me-2"></i>Pesan via WhatsApp
                 </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-12" data-aos="fade-up">
+            <div class="product-tabs">
+                <ul class="nav nav-tabs" id="productTab" role="tablist">
+                    <li class="nav-item" role="presentation"><button class="nav-link active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description-pane" type="button">Deskripsi</button></li>
+                    <li class="nav-item" role="presentation"><button class="nav-link" id="specs-tab" data-bs-toggle="tab" data-bs-target="#specs-pane" type="button">Spesifikasi</button></li>
+                    <!-- <li class="nav-item" role="presentation"><button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews-pane" type="button">Ulasan</button></li> -->
+                </ul>
+                <div class="tab-content bg-white p-4 p-md-5" id="productTabContent">
+                    <div class="tab-pane fade show active" id="description-pane" role="tabpanel"><?= nl2br(esc($product['description'])) ?></div>
+                    <div class="tab-pane fade" id="specs-pane" role="tabpanel">
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><strong>Bahan:</strong> <?= !empty($product['bahan']) ? esc($product['bahan']) : 'Kayu Jati Pilihan' ?></li>
+                            <li class="mb-2"><strong>Warna:</strong> <?= !empty($product['warna']) ? esc($product['warna']) : 'Natural Doff' ?></li>
+                            <li class="mb-2"><strong>Dimensi:</strong>
+                                <?php if (!empty($product['panjang']) && !empty($product['lebar']) && !empty($product['tinggi'])): ?>
+                                    <?= esc($product['panjang']) ?> x <?= esc($product['lebar']) ?> x <?= esc($product['tinggi']) ?> cm
+                                <?php else: ?>
+                                    Tanyakan untuk detail
+                                <?php endif; ?>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="reviews-pane" role="tabpanel">Belum ada ulasan untuk produk ini.</div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 <?php if (!empty($related_products)): ?>
-    <section class="container py-5 mt-5">
-        <h2 class="text-center section-title">Anda Mungkin Juga Suka</h2>
-        <div class="row g-4">
-            <div class="row row-cols-1 row-cols-md-3 row-cols-lg-3 g-4">
-                <?php foreach ($related_products as $related): ?>
-                    <div class="col">
-                        <div class="card product-card h-100 shadow-sm border-0">
-                            <img src="<?= base_url('uploads/products/' . esc($related['image_url'] ?? 'default.jpg')) ?>"
-                                class="card-img-top"
-                                alt="<?= esc($related['product_name']) ?>"
-                                style="aspect-ratio: 1/1; object-fit: cover;">
-                            <div class="card-body text-center d-flex flex-column">
-                                <h5 class="card-title mt-2"><?= esc($related['product_name']) ?></h5>
-                                <p class="card-text text-muted mb-1"><?= esc($related['category']) ?></p>
-                                <p class="card-text fw-bold fs-6 text-dark mb-3">
-                                    Rp <?= number_format($related['price'], 0, ',', '.') ?>
-                                </p>
-                                <div class="mt-auto">
-                                    <a href="<?= base_url('product/' . $related['id']) ?>" class="btn btn-dark btn-sm px-3">
-                                        Lihat Detail
-                                    </a>
-                                </div>
+    <section class="container py-5 mt-4">
+        <h2 class="text-center section-title" data-aos="fade-up">Anda Mungkin Juga Suka</h2>
+        <div class="row g-4 justify-content-center">
+
+            <?php foreach ($related_products as $related): ?>
+                <div class="col-12 col-md-6 col-lg-4" data-aos="zoom-in">
+
+                    <div class="card product-card h-100 border-0 overflow-hidden">
+                        <div class="product-card-img-container">
+                            <a href="<?= base_url('product/' . $related['id']) ?>">
+                                <img src="<?= base_url('uploads/products/' . esc($related['image_url'] ?? 'default.jpg')) ?>"
+                                    class="card-img-top"
+                                    style="aspect-ratio: 16/9;"
+                                    alt="<?= esc($related['product_name']) ?>">
+                            </a>
+                            <div class="product-card-overlay">
+                                <a href="<?= base_url('product/' . $related['id']) ?>" class="btn btn-light fw-bold">Lihat Detail</a>
                             </div>
                         </div>
+                        <div class="card-body text-start">
+                            <p class="card-text text-muted mb-1 small"><?= esc($related['category']) ?></p>
+                            <h5 class="card-title mt-0">
+                                <a href="<?= base_url('product/' . $related['id']) ?>" class="text-decoration-none text-dark"><?= esc($related['product_name']) ?></a>
+                            </h5>
+                            <p class="card-text fw-bold fs-6 text-dark mb-0">
+                                Rp <?= number_format($related['price'], 0, ',', '.') ?>
+                            </p>
+                        </div>
                     </div>
-                <?php endforeach; ?>
-            </div>
 
+                </div>
+            <?php endforeach; ?>
 
         </div>
     </section>
 <?php endif; ?>
+
 
 <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-fullscreen">
@@ -123,30 +159,78 @@
     </div>
 </div>
 
-
 <?= $this->endSection() ?>
 
 <?= $this->section('page_scripts') ?>
 <style>
-    .thumbnail-wrapper {
-        width: 90px;
-        height: 90px;
+    .breadcrumb-item a {
+        text-decoration: none;
+        color: #6c757d;
     }
 
-    .product-thumbnail {
-        cursor: pointer;
-        border: 2px solid transparent;
-        transition: border-color 0.2s ease, transform 0.2s ease;
+    .breadcrumb-item a:hover {
+        color: #212529;
+    }
+
+    .zoom-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        background: rgba(0, 0, 0, 0);
+        transition: background 0.3s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: zoom-in;
     }
 
-    .product-thumbnail:hover,
-    .product-thumbnail.active {
+    .zoom-overlay i {
+        font-size: 3rem;
+        color: white;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .zoom-overlay:hover {
+        background: rgba(0, 0, 0, 0.4);
+    }
+
+    .zoom-overlay:hover i {
+        opacity: 1;
+    }
+
+    .thumbnail-slider .splide__slide {
+        padding: 5px;
+        cursor: pointer;
+    }
+
+    .thumbnail-slider .splide__slide img {
+        width: 100%;
+        height: 100px;
+        object-fit: cover;
+        border: 2px solid transparent;
+        transition: border-color 0.2s ease;
+    }
+
+    .thumbnail-slider .splide__slide.is-active img {
         border-color: #E0C9A6;
-        /* Warna aksen emas */
-        transform: scale(1.05);
+    }
+
+    .product-tabs .nav-tabs .nav-link {
+        color: #6c757d;
+        font-weight: 600;
+    }
+
+    .product-tabs .nav-tabs .nav-link.active {
+        color: #212529;
+        border-color: #dee2e6 #dee2e6 #fff;
+    }
+
+    .product-tabs .tab-content {
+        border: 1px solid #dee2e6;
+        border-top: none;
     }
 
     .modal-content {
@@ -155,20 +239,58 @@
 </style>
 
 <script>
-    function changeImage(thumbElement) {
-        const newImageUrl = thumbElement.src;
-        document.getElementById('main-product-image').src = newImageUrl;
+    document.addEventListener('DOMContentLoaded', function() {
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+        [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 
-        document.querySelectorAll('.product-thumbnail').forEach(thumb => {
-            thumb.classList.remove('active');
-        });
-        thumbElement.classList.add('active');
-    }
+        const mainImage = document.getElementById('main-product-image');
 
-    function openImageModal(src) {
-        document.getElementById('zoomedImage').src = src;
-        const imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
-        imageModal.show();
-    }
+        const zoomTrigger = document.querySelector('.zoom-overlay');
+        const imageModalEl = document.getElementById('imageModal');
+        if (zoomTrigger && imageModalEl) {
+            const imageModal = new bootstrap.Modal(imageModalEl);
+            const zoomedImage = document.getElementById('zoomedImage');
+            zoomTrigger.addEventListener('click', function() {
+                zoomedImage.src = mainImage.src;
+                imageModal.show();
+            });
+        }
+
+        const copyLinkBtn = document.getElementById('copyLinkBtn');
+        if (copyLinkBtn) {
+            const tooltip = bootstrap.Tooltip.getInstance(copyLinkBtn);
+            copyLinkBtn.addEventListener('click', function() {
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    const originalTitle = this.getAttribute('data-bs-original-title');
+                    this.setAttribute('data-bs-original-title', 'Link disalin!');
+                    tooltip.show();
+                    setTimeout(() => {
+                        tooltip.hide();
+                        this.setAttribute('data-bs-original-title', originalTitle);
+                    }, 2000);
+                });
+            });
+        }
+
+        const thumbnailSlider = document.querySelector('.thumbnail-slider');
+        if (thumbnailSlider) {
+            const splide = new Splide(thumbnailSlider, {
+                perPage: 4,
+                gap: '0.5rem',
+                rewind: false,
+                pagination: false,
+                isNavigation: true,
+                breakpoints: {
+                    768: {
+                        perPage: 3
+                    }
+                }
+            }).mount();
+
+            splide.on('click', function(slide) {
+                mainImage.src = slide.slide.querySelector('img').src;
+            });
+        }
+    });
 </script>
 <?= $this->endSection() ?>

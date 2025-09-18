@@ -11,15 +11,15 @@ class UserProduct extends BaseController
     {
         $productModel = new \App\Models\ProductModel();
 
-        // Ambil input pencarian & sorting dari query string (?search=...&sort=...)
-        $search = $this->request->getGet('search');
-        $sort   = $this->request->getGet('sort');
+        // Ambil input pencarian, sorting & kategori dari query string
+        $search   = $this->request->getGet('search');
+        $sort     = $this->request->getGet('sort');
+        $category = $this->request->getGet('category'); // <- kategori
 
         // Query dasar ambil produk + gambar
         $builder = $productModel->select('products.*, MIN(product_images.image_url) as product_image')
             ->join('product_images', 'product_images.product_id = products.id', 'left')
             ->groupBy('products.id');
-
 
         // Filter pencarian
         if (!empty($search)) {
@@ -27,6 +27,11 @@ class UserProduct extends BaseController
                 ->like('products.product_name', $search)
                 ->orLike('products.category', $search)
                 ->groupEnd();
+        }
+
+        // Filter kategori
+        if (!empty($category)) {
+            $builder->where('products.category', $category);
         }
 
         // Sorting
@@ -47,18 +52,24 @@ class UserProduct extends BaseController
                 $builder->orderBy('products.id', 'DESC'); // default terbaru
         }
 
-        // Gunakan paginate() agar $pager tersedia
-        $perPage = 6; // jumlah produk per halaman
+        // Paginate
+        $perPage  = 6;
         $products = $builder->paginate($perPage, 'products');
-        $pager    = $builder->pager; // ambil pager
+        $pager    = $builder->pager;
+
+        // Ambil daftar kategori unik dari produk
+        $categories = $productModel->select('category')->distinct()->orderBy('category')->findAll();
 
         return view('user/product/list_view', [
-            'products' => $products,
-            'pager'    => $pager,
-            'search'   => $search,
-            'sort'     => $sort
+            'products'   => $products,
+            'pager'      => $pager,
+            'search'     => $search,
+            'sort'       => $sort,
+            'category'   => $category,
+            'categories' => $categories
         ]);
     }
+
 
 
 

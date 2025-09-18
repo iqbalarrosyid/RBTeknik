@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
 
     <style>
         /* --- General & Typography --- */
@@ -154,22 +155,53 @@
         }
 
         /* --- Components (Cards, Buttons, etc.) --- */
+        /* --- Styling Kartu Produk Interaktif --- */
         .product-card {
-            border: none;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: box-shadow 0.3s ease;
+            border: 1px solid #f0f0f0;
         }
 
-
         .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card-img-container {
+            position: relative;
+            overflow: hidden;
         }
 
         .product-card .card-img-top {
-            width: 100%;
-            height: 220px;
+            aspect-ratio: 16/9;
             object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .card-img-top {
+            transform: scale(1.05);
+        }
+
+        .product-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+
+            /* Ini kuncinya: sembunyikan overlay secara default */
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+        }
+
+        .product-card:hover .product-card-overlay {
+            /* Tampilkan overlay saat card di-hover */
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .btn-custom {
@@ -237,29 +269,112 @@
             border-bottom-left-radius: 0;
         }
 
+        .shopee-alert {
+            background-color: #EE4D2D;
+            /* Warna oranye khas Shopee */
+            color: #ffffff;
+            border: none;
+        }
 
-        /* --- Floating Widgets --- */
-        .whatsapp-float {
+        .shopee-alert .btn-shopee {
+            background-color: #ffffff;
+            color: #EE4D2D;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .shopee-alert .btn-shopee:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+        }
+
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        .wa-chat-btn {
             position: fixed;
             width: 60px;
             height: 60px;
-            bottom: 20px;
-            right: 20px;
-            background-color: #25d366;
+            bottom: 25px;
+            right: 25px;
+            background-color: #212529;
+            /* Warna gelap sesuai tema */
             color: #FFF;
             border-radius: 50px;
             font-size: 30px;
-            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.25);
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
             z-index: 1000;
-            transition: transform 0.2s ease-in-out;
+            transition: all 0.3s ease;
             display: flex;
             justify-content: center;
             align-items: center;
+            /* Terapkan animasi pulse */
+            animation: pulse 2s infinite;
         }
 
-        .whatsapp-float:hover {
-            transform: scale(1.1);
+        .wa-chat-btn:hover {
+            background-color: #25d366;
+            /* Berubah jadi hijau saat hover */
             color: #FFF;
+            transform: scale(1.1);
+            animation: none;
+            /* Hentikan animasi pulse saat hover */
+        }
+
+        /* Styling untuk Tooltip */
+        .wa-chat-btn::before {
+            content: attr(data-text);
+            /* Ambil teks dari atribut data-text */
+            position: absolute;
+            right: 75px;
+            /* Jarak tooltip dari tombol */
+            top: 50%;
+            transform: translateY(-50%) scale(0);
+            /* Sembunyikan secara default */
+            transform-origin: right;
+            background-color: #212529;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: 'Montserrat', sans-serif;
+            white-space: nowrap;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+
+        /* Styling untuk panah kecil pada tooltip */
+        .wa-chat-btn::after {
+            content: '';
+            position: absolute;
+            right: 65px;
+            top: 50%;
+            transform: translateY(-50%) scale(0);
+            transform-origin: right;
+            border: 6px solid transparent;
+            border-left-color: #212529;
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+
+        /* Tampilkan tooltip saat tombol di-hover */
+        .wa-chat-btn:hover::before,
+        .wa-chat-btn:hover::after {
+            transform: translateY(-50%) scale(1);
+            opacity: 1;
         }
 
         .truncate-text {
@@ -272,6 +387,25 @@
         }
     </style>
 </head>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+<script>
+    // Inisialisasi untuk Testimonial Slider
+    if (document.querySelector('.testimonial-slider')) {
+        new Splide('.testimonial-slider', {
+            type: 'loop',
+            perPage: 2,
+            perMove: 1,
+            gap: '1.5rem',
+            pagination: true,
+            arrows: false,
+            breakpoints: {
+                768: {
+                    perPage: 1,
+                },
+            }
+        }).mount();
+    }
+</script>
 
 <body>
 
@@ -296,6 +430,7 @@
                     <li class="nav-item mx-2"><a class="nav-link <?= ($current_page == 'about') ? 'active' : '' ?>" href="<?= base_url('/about'); ?>">About</a></li>
                     <li class="nav-item mx-2"><a class="nav-link <?= ($current_page == 'products' || $current_page == 'product') ? 'active' : '' ?>" href="<?= base_url('/products'); ?>">Products</a></li>
                     <li class="nav-item mx-2"><a class="nav-link <?= ($current_page == 'faq') ? 'active' : '' ?>" href="<?= base_url('/faq'); ?>">FAQ</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link <?= ($current_page == 'blog') ? 'active' : '' ?>" href="<?= base_url('/blog'); ?>">Blog</a></li>
                     <li class="nav-item ms-3"><a class="btn btn-dark rounded-pill px-4" href="<?= base_url('/contact'); ?>">Contact</a></li>
                     <li class="nav-item ms-2">
                         <a class="btn btn-outline-dark rounded-pill px-4 d-flex align-items-center" href="<?= base_url('/admin'); ?>">
@@ -330,6 +465,7 @@
                         <li><a href="<?= base_url('/about') ?>">About</a></li>
                         <li><a href="<?= base_url('/products') ?>">Products</a></li>
                         <li><a href="<?= base_url('/faq') ?>">FAQ</a></li>
+                        <li><a href="<?= base_url('/blog') ?>">Blog</a></li>
                     </ul>
                 </div>
 
@@ -356,7 +492,7 @@
                     <a href="#" class="text-white-50 mx-2" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
                     <a href="#" class="text-white-50 mx-2" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
                     <a href="#" class="text-white-50 mx-2" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
-                    <a href="#" class="text-white-50 mx-2" aria-label="Shopee"><i class="bi bi-shop"></i></a>
+                    <a href="https://shopee.co.id/rbteknik37" class="text-white-50 mx-2" target="_blank" aria-label="Shopee"><i class="bi bi-shop"></i></a>
                 </div>
             </div>
         </div>
@@ -365,7 +501,12 @@
     <?php
     $pesan_whatsapp = "Halo, saya tertarik dengan produk furnitur dari RB Teknik. Bisa minta informasi lebih lanjut?";
     ?>
-    <a href="https://wa.me/6283894056521?text=<?= urlencode($pesan_whatsapp) ?>" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat di WhatsApp">
+    <a href="https://wa.me/6283894056521?text=<?= urlencode($pesan_whatsapp) ?>"
+        class="wa-chat-btn"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat di WhatsApp"
+        data-text="Chat via WhatsApp">
         <i class="bi bi-whatsapp"></i>
     </a>
 

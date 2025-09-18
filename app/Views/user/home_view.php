@@ -2,93 +2,93 @@
 
 <?= $this->section('content') ?>
 
-<div class="main-content-wrapper">
-    <!-- Hero Section -->
-    <section class="container py-5 my-4 order-lg-2" data-aos="fade-up">
-        <div class="row align-items-center g-5">
-            <div class="col-lg-6 text-center" data-aos="fade-right">
-                <h2 class="section-title text-center">Welcome To RB Teknik</h2>
-                <p class="lead text-center">
-                    Where Artistry Meets Craftsmanship. Discover the timeless beauty and quality of our handcrafted wood creations, meticulously designed to adorn your life with elegance and durability.
-                </p>
-                <a href="<?= base_url('/products'); ?>" class="btn btn-custom btn-lg">Selengkapnya</a>
-            </div>
-            <div class="col-lg-6" data-aos="fade-left">
-                <img src="https://images.pexels.com/photos/3757055/pexels-photo-3757055.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                    class="img-fluid rounded shadow" alt="Proses Pembuatan Furnitur">
+<section class="hero-section text-center text-white d-flex align-items-center">
+    <div class="container" data-aos="fade-up">
+        <h1 class="display-3 fw-bold">Seni Pertukangan dalam Setiap Detail</h1>
+        <p class="lead col-lg-8 mx-auto">
+            Kami menciptakan furnitur kustom berkualitas tinggi yang memadukan keindahan abadi dengan fungsionalitas modern untuk rumah Anda.
+        </p>
+        <div class="mt-4">
+            <a href="<?= base_url('/products'); ?>" class="btn btn-dark btn-lg fw-bold px-5 py-3 me-2 mb-2">Lihat Produk</a>
+            <a href="#about" class="btn btn-outline-light btn-lg fw-bold px-5 py-3 mb-2">Tentang Kami</a>
+        </div>
+    </div>
+</section>
+
+
+<section class="container py-5">
+    <div class="row text-center g-4">
+        <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="p-4">
+                <i class="bi bi-gem fs-2 text-dark"></i>
+                <h4 class="fw-bold my-3">Kualitas Premium</h4>
+                <p class="text-muted">Dibuat dari material kayu solid pilihan yang menjamin kekuatan dan keindahan alami.</p>
             </div>
         </div>
-    </section>
-
-    <!-- Tentang Kami -->
-    <section class="container py-5 my-4 order-lg-1" data-aos="zoom-in">
-        <div class="row g-5">
-            <div class="col-12">
-                <h2 class="section-title text-center">Tentang Kami</h2>
-                <p class="lead text-center">
-                    Kami adalah pengrajin furnitur dengan pengalaman bertahun-tahun dalam menciptakan karya yang memadukan seni dan fungsi.
-                    Setiap produk kami dibuat dari material pilihan dengan detail pengerjaan yang rapi, menjamin kenyamanan, keindahan, dan daya tahan.
-                </p>
+        <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="p-4">
+                <i class="bi bi-rulers fs-2 text-dark"></i>
+                <h4 class="fw-bold my-3">Desain Kustom</h4>
+                <p class="text-muted">Wujudkan furnitur impian Anda dengan layanan desain yang bisa disesuaikan sepenuhnya.</p>
             </div>
         </div>
-    </section>
-</div>
-
-<!-- Filosofi -->
-<section class="py-5 bg-white" data-aos="fade-up">
-    <div class="container">
-        <h2 class="text-center section-title">Filosofi Kami</h2>
-        <div class="row text-center g-4">
-            <div class="col-md-4" data-aos="flip-left">
-                <div class="p-4">
-                    <i class="bi bi-gem fs-1 text-dark"></i>
-                    <h4 class="fw-bold my-3">Kualitas Terbaik</h4>
-                    <p class="text-muted">
-                        Kami hanya menggunakan material kayu pilihan yang telah melewati proses seleksi ketat untuk menjamin kekuatan dan daya tahan produk.
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-4" data-aos="flip-up">
-                <div class="p-4">
-                    <i class="bi bi-rulers fs-1 text-dark"></i>
-                    <h4 class="fw-bold my-3">Desain Kustom</h4>
-                    <p class="text-muted">
-                        Setiap klien adalah unik. Kami bekerja sama dengan Anda untuk mewujudkan furnitur impian yang sesuai dengan gaya dan kebutuhan Anda.
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-4" data-aos="flip-right">
-                <div class="p-4">
-                    <i class="bi bi-hand-thumbs-up fs-1 text-dark"></i>
-                    <h4 class="fw-bold my-3">Sentuhan Tangan Ahli</h4>
-                    <p class="text-muted">
-                        Dikerjakan oleh para pengrajin berpengalaman, setiap detail furnitur kami mendapatkan perhatian penuh untuk hasil akhir yang sempurna.
-                    </p>
-                </div>
+        <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="p-4">
+                <i class="bi bi-hand-thumbs-up fs-2 text-dark"></i>
+                <h4 class="fw-bold my-3">Tangan Terampil</h4>
+                <p class="text-muted">Setiap produk adalah hasil karya tangan para pengrajin berpengalaman kami.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Produk Terbaru -->
-<section class="container py-5" data-aos="fade-up">
-    <h2 class="text-center section-title">Produk Terbaru</h2>
+
+<section id="about" class="py-5 bg-white">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6" data-aos="fade-right">
+                <div class="img-container-fixed rounded shadow">
+                    <img src="https://images.pexels.com/photos/3757055/pexels-photo-3757055.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Proses Pembuatan Furnitur">
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <h2 class="section-title">Welcome to RB Teknik</h2>
+                <p class="lead">Where Artistry Meets Craftsmanship.</p>
+                <p>Kami adalah pengrajin furnitur dengan pengalaman bertahun-tahun dalam menciptakan karya yang memadukan seni dan fungsi. Setiap produk kami dibuat dari material pilihan dengan detail pengerjaan yang rapi.</p>
+                <a href="<?= base_url('/about'); ?>" class="btn btn-outline-dark mt-3">Pelajari Lebih Lanjut</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="container py-5">
+    <h2 class="text-center section-title" data-aos="fade-up">Produk Terbaru</h2>
     <div class="row g-4">
         <?php if (!empty($latestProducts)): ?>
             <?php foreach ($latestProducts as $i => $product): ?>
-                <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="<?= $i * 100 ?>">
-                    <div class="card product-card h-100">
-                        <img src="<?= base_url('uploads/products/' . ($product['image_url'] ?? 'default.jpg')) ?>"
-                            class="card-img-top"
-                            alt="<?= esc($product['product_name']) ?>">
-                        <div class="card-body text-center d-flex flex-column">
-                            <h5 class="card-title mt-2"><?= esc($product['product_name']) ?></h5>
-                            <p class="card-text truncate-text"><?= esc($product['description']) ?></p>
-                            <p class="card-text text-muted mb-1"><?= esc($product['category']) ?></p>
-                            <p class="fw-bold text-dark mt-auto">
-                                Rp <?= number_format($product['price'], 0, ',', '.') ?>
-                            </p>
-                            <a href="<?= base_url('product/' . $product['id']) ?>" class="btn btn-sm btn-dark mt-2">Detail</a>
+                <div class="col-12 col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="<?= $i * 100 ?>">
+                    <div class="card product-card h-100 border-0 overflow-hidden">
+                        <div class="product-card-img-container">
+                            <a href="<?= base_url('product/' . $product['id']) ?>">
+                                <img src="<?= base_url('uploads/products/' . ($product['image_url'] ?? 'default.jpg')) ?>"
+                                    class="card-img-top"
+                                    alt="<?= esc($product['product_name']) ?>">
+                            </a>
+                            <div class="product-card-overlay">
+                                <a href="<?= base_url('product/' . $product['id']) ?>" class="btn btn-light fw-bold">Lihat Detail</a>
+                            </div>
+                        </div>
+                        <div class="card-body text-start">
+                            <p class="card-text text-muted mb-1 small"><?= esc($product['category']) ?></p>
+                            <h5 class="card-title mt-0">
+                                <a href="<?= base_url('product/' . $product['id']) ?>" class="text-decoration-none text-dark"><?= esc($product['product_name']) ?></a>
+                            </h5>
+                            <?php if (!empty($product['price'])): ?>
+                                <p class="card-text fw-bold fs-6 text-dark mb-0">
+                                    Rp <?= number_format($product['price'], 0, ',', '.') ?>
+                                </p>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -99,13 +99,152 @@
     </div>
 </section>
 
-<!-- CTA -->
+
+<section class="py-5 bg-white">
+    <div class="container">
+        <h2 class="text-center section-title" data-aos="fade-up">Apa Kata Mereka</h2>
+        <div class="splide testimonial-slider" data-aos="fade-up" data-aos-delay="200">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    <li class="splide__slide">
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p class="quote">"Kualitasnya luar biasa, detailnya rapi banget. Meja makannya jadi pusat perhatian di rumah. Sangat direkomendasikan!"</p>
+                            <p class="author">- Budi Santoso, Jakarta</p>
+                        </div>
+                    </li>
+                    <li class="splide__slide">
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p class="quote">"Proses pesanan kustomnya mudah dan hasilnya persis seperti yang saya bayangkan. Timnya sangat membantu. Terima kasih RB Teknik!"</p>
+                            <p class="author">- Citra Lestari, Surabaya</p>
+                        </div>
+                    </li>
+                    <li class="splide__slide">
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p class="quote">"Pengirimannya aman dan tepat waktu. Barangnya sampai tanpa lecet sedikitpun. Kualitasnya top, kayunya solid banget."</p>
+                            <p class="author">- Ahmad Ridwan, Bandung</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="container py-5" data-aos="fade-up">
+    <h2 class="text-center section-title">Artikel Terbaru</h2>
+    <div class="row g-4">
+        <?php if (!empty($latestBlogs)): ?>
+            <?php foreach ($latestBlogs as $i => $blog): ?>
+                <div class="col-12 col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="<?= $i * 100 ?>">
+
+                    <div class="card product-card h-100 border-0 overflow-hidden">
+                        <div class="product-card-img-container">
+                            <a href="<?= base_url('blog/' . $blog['id']) ?>">
+                                <?php
+                                $thumbnail = $blog['thumbnail'] ?? 'default.jpg';
+                                ?>
+                                <img src="<?= base_url('uploads/blog/' . esc($thumbnail)) ?>"
+                                    class="card-img-top"
+                                    alt="<?= esc($blog['title']) ?>"
+                                    style="aspect-ratio: 16/9; object-fit: cover;">
+                            </a>
+                            <div class="product-card-overlay">
+                                <a href="<?= base_url('blog/' . $blog['id']) ?>" class="btn btn-light fw-bold">Baca Selengkapnya</a>
+                            </div>
+                        </div>
+                        <div class="card-body text-start d-flex flex-column">
+                            <p class="card-text text-muted mb-2"><small><?= date('d M Y', strtotime($blog['created_at'])) ?></small></p>
+                            <h5 class="card-title mt-0 flex-grow-1">
+                                <a href="<?= base_url('blog/' . $blog['id']) ?>" class="text-decoration-none text-dark">
+                                    <?= esc($blog['title']) ?>
+                                </a>
+                            </h5>
+                            <p class="card-text text-secondary mb-0 mt-auto truncate-text">
+                                <?= word_limiter(strip_tags($blog['content']), 15) ?>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p class="text-center text-muted">Belum ada artikel.</p>
+        <?php endif; ?>
+    </div>
+</section>
+
+
 <section class="py-5 text-center cta-section my-4" data-aos="fade-up">
     <div class="container">
         <h2 class="text-center section-title">Punya Ide Desain Sendiri?</h2>
         <p class="lead mb-4">Wujudkan furnitur impian Anda bersama kami. Hubungi untuk konsultasi desain kustom.</p>
-        <a href="<?= base_url('/contact'); ?>" class="btn btn-custom btn-lg">Hubungi Kami</a>
+        <a href="<?= base_url('/contact'); ?>" class="btn btn-dark btn-lg fw-bold">Hubungi Kami</a>
     </div>
 </section>
 
+<?= $this->endSection() ?>
+
+<?= $this->section('page_scripts') ?>
+<style>
+    .hero-section {
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.pexels.com/photos/1866149/pexels-photo-1866149.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') center center/cover no-repeat;
+        height: 90vh;
+        min-height: 600px;
+    }
+
+    .testimonial-card {
+        background-color: #f8f9fa;
+        padding: 2rem;
+        border-radius: 0.5rem;
+        text-align: center;
+        border-left: 5px solid #E0C9A6;
+        height: 100%;
+    }
+
+    .testimonial-card .stars {
+        color: #ffc107;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .testimonial-card .quote {
+        font-style: italic;
+        color: #495057;
+    }
+
+    .testimonial-card .author {
+        font-weight: bold;
+        margin-top: 1.5rem;
+        color: #212529;
+    }
+
+    .splide__pagination__page.is-active {
+        background: #212529 !important;
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Inisialisasi untuk Testimonial Slider
+        if (document.querySelector('.testimonial-slider')) {
+            new Splide('.testimonial-slider', {
+                type: 'loop',
+                perPage: 2,
+                perMove: 1,
+                gap: '1.5rem',
+                pagination: true,
+                arrows: false,
+                breakpoints: {
+                    768: {
+                        perPage: 1,
+                    },
+                }
+            }).mount();
+        }
+    });
+</script>
 <?= $this->endSection() ?>
