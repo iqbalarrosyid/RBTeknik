@@ -23,7 +23,7 @@
                     </h2>
                     <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#faqAccordionPemesanan">
                         <div class="accordion-body text-secondary">
-                            Anda bisa langsung menghubungi kami melalui tombol WhatsApp yang tersedia untuk konsultasi. Tim kami akan membantu Anda mulai dari pemilihan desain, material, hingga proses pemesanan. Proses umumnya meliputi: konsultasi > penawaran harga > pembayaran uang muka (DP) > proses produksi > pelunasan > pengiriman.
+                            Anda bisa langsung menghubungi kami melalui tombol WhatsApp yang tersedia untuk konsultasi atau dengan cara menekan tombol pesan via WhatsApp pada produk yang ingin Anda pesan. Tim kami akan membantu Anda mulai dari pemilihan desain, material, hingga proses pemesanan. Proses umumnya meliputi: konsultasi > penawaran harga > pembayaran uang muka (DP) > proses produksi > pelunasan > pengiriman.
                         </div>
                     </div>
                 </div>

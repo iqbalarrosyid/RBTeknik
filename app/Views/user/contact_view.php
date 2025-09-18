@@ -5,7 +5,7 @@
 <section class="container py-5">
     <h1 class="text-center section-title">Hubungi Kami</h1>
     <p class="lead text-center mb-5 col-md-8 mx-auto">
-        Kami siap membantu mewujudkan furnitur impian Anda. Silakan hubungi kami melalui informasi di bawah ini atau kirimkan pesan melalui formulir kontak.
+        Kami siap membantu mewujudkan furnitur impian Anda. Silakan hubungi kami melalui informasi di bawah ini.
     </p>
 </section>
 

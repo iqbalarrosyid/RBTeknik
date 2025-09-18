@@ -27,6 +27,7 @@ class App extends BaseConfig
         $this->baseURL = getenv('app.baseURL') ?: (php_sapi_name() === 'cli' ? 'http://localhost/' : 'http://' . ($_SERVER['HTTP_HOST'] ?? 'localhost') . '/');
     }
 
+
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
      * If you want to accept multiple Hostnames, set this.

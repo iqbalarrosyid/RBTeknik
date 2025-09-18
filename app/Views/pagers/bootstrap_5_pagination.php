@@ -1,5 +1,28 @@
 <?php $pager->setSurroundCount(2) ?>
 
+
+<style>
+    .pagination .page-link {
+        color: #212529;
+        /* teks hitam */
+    }
+
+    .pagination .page-link:hover {
+        color: #fff;
+        /* teks putih saat hover */
+        background-color: #212529;
+        /* background hitam saat hover */
+    }
+
+    .pagination .page-item.active .page-link {
+        background-color: #212529;
+        /* aktif hitam */
+        border-color: #212529;
+        color: #fff;
+        /* teks putih */
+    }
+</style>
+
 <nav aria-label="Page navigation">
     <ul class="pagination">
         <?php if ($pager->hasPrevious()) : ?>

@@ -7,9 +7,6 @@ use App\Models\ProductImageModel;
 
 class UserProduct extends BaseController
 {
-    /**
-     * Halaman untuk menampilkan semua produk (Katalog).
-     */
     public function index()
     {
         $productModel = new \App\Models\ProductModel();
@@ -51,7 +48,7 @@ class UserProduct extends BaseController
         }
 
         // Gunakan paginate() agar $pager tersedia
-        $perPage = 12; // jumlah produk per halaman
+        $perPage = 6; // jumlah produk per halaman
         $products = $builder->paginate($perPage, 'products');
         $pager    = $builder->pager; // ambil pager
 

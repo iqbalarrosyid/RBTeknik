@@ -84,6 +84,7 @@
                         <div class="card-body text-center d-flex flex-column">
                             <h5 class="card-title mt-2"><?= esc($product['product_name']) ?></h5>
                             <p class="card-text truncate-text"><?= esc($product['description']) ?></p>
+                            <p class="card-text text-muted mb-1"><?= esc($product['category']) ?></p>
                             <p class="fw-bold text-dark mt-auto">
                                 Rp <?= number_format($product['price'], 0, ',', '.') ?>
                             </p>

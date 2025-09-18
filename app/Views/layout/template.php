@@ -23,7 +23,8 @@
         body {
             font-family: 'Lato', sans-serif;
             background-color: #f8f9fa;
-            color: #495057;
+            color: #000;
+            /* color: #495057; */
             padding-top: 90px;
             /* Disesuaikan dengan tinggi navbar */
         }

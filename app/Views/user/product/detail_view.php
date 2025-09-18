@@ -82,8 +82,7 @@
     <section class="container py-5 mt-5">
         <h2 class="text-center section-title">Anda Mungkin Juga Suka</h2>
         <div class="row g-4">
-
-            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
+            <div class="row row-cols-1 row-cols-md-3 row-cols-lg-3 g-4">
                 <?php foreach ($related_products as $related): ?>
                     <div class="col">
                         <div class="card product-card h-100 shadow-sm border-0">

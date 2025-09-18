@@ -34,10 +34,10 @@
 
 
     <?php if (!empty($products)): ?>
-        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
+        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-3 g-4">
             <?php foreach ($products as $product): ?>
                 <div class="col">
-                    <div class="card product-card h-100 shadow-sm border-0">
+                    <div class="card product-card h-100 border-0">
                         <a href="<?= base_url('product/' . $product['id']) ?>">
                             <img src="<?= base_url('uploads/products/' . esc($product['product_image'] ?? 'default.jpg')) ?>"
                                 class="card-img-top"

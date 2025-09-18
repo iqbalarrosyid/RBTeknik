@@ -7,7 +7,7 @@
     <div class="row align-items-center g-5 text-center" data-aos="fade-up">
         <div class="col-lg-12">
             <h1 class="display-5 fw-bold section-title">Kisah di Balik Setiap Potongan Material</h1>
-            <p class="lead text-secondary" data-aos="fade-up" data-aos-delay="100">
+            <p class="lead text-secondary" data-aos="fade-up">
                 Selamat datang di RB Teknik, tempat di mana seni bertemu dengan keahlian pertukangan. Kami percaya bahwa furnitur bukan hanya sekadar benda, melainkan bagian dari cerita dan kehangatan sebuah rumah.
             </p>
             <p class="text-secondary" data-aos="fade-up" data-aos-delay="200">
