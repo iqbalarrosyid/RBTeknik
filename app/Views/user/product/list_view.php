@@ -7,18 +7,25 @@
         <h1 class="text-center section-title">Produk Kami</h1>
     </div>
 
-    <div class="alert shopee-alert d-flex flex-column flex-md-row align-items-center justify-content-between p-4 mb-4 shadow-sm rounded-3" role="alert" data-aos="fade-up" data-aos-delay="100">
+    <div class="alert marketplace-alert d-flex flex-column flex-md-row align-items-center justify-content-between p-4 mb-4 shadow-sm rounded-3" role="alert" data-aos="fade-up" data-aos-delay="100">
         <div class="d-flex align-items-center mb-2 mb-md-0">
-            <i class="bi bi-shop-window fs-2 me-3"></i>
+            <i class="bi bi-bag-heart fs-2 me-3 text-danger"></i>
             <div>
-                <h5 class="fw-bold mb-0">Kini Hadir di Shopee!</h5>
+                <h5 class="fw-bold mb-3">Kini tersedia di marketplace kesayangan anda!</h5>
                 <span>Belanja produk kami lebih mudah dan dapatkan promo menarik.</span>
             </div>
         </div>
-        <a href="https://shopee.co.id/rbteknik37" target="_blank" class="btn btn-shopee px-4 py-2 flex-shrink-0">
-            Kunjungi Toko Kami <i class="bi bi-arrow-right-short"></i>
-        </a>
+        <div class="d-flex gap-2">
+            <a href="https://shopee.co.id/rbteknik37" target="_blank" class="btn btn-shopee px-4 py-2 flex-shrink-0">
+                Shopee <i class="bi bi-arrow-right-short"></i>
+            </a>
+            <a href="https://tokopedia.link/3fJ3bUs5MWb" target="_blank" class="btn btn-tokopedia px-4 py-2 flex-shrink-0">
+                Tokopedia <i class="bi bi-arrow-right-short"></i>
+            </a>
+        </div>
     </div>
+
+
 
     <div class="p-4 mb-5 bg-white rounded-3 shadow-sm" data-aos="fade-up" data-aos-delay="200">
         <form method="get" action="<?= base_url('products') ?>">
@@ -142,6 +149,41 @@
     .product-card:hover .product-card-overlay {
         opacity: 1;
         transform: translateY(0);
+    }
+
+    .marketplace-alert {
+        background-color: #ffffff;
+        /* netral putih */
+        color: #333333;
+        border: 1px solid #e0e0e0;
+    }
+
+    /* Tombol Shopee */
+    .btn-shopee {
+        background-color: #EE4D2D;
+        /* khas Shopee */
+        color: #ffffff;
+        font-weight: bold;
+        transition: all 0.3s ease;
+    }
+
+    .btn-shopee:hover {
+        opacity: 0.9;
+        transform: scale(1.05);
+    }
+
+    /* Tombol Tokopedia */
+    .btn-tokopedia {
+        background-color: #42B549;
+        /* khas Tokopedia */
+        color: #ffffff;
+        font-weight: bold;
+        transition: all 0.3s ease;
+    }
+
+    .btn-tokopedia:hover {
+        opacity: 0.9;
+        transform: scale(1.05);
     }
 </style>
 <?= $this->endSection() ?>

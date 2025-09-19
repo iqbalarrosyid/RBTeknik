@@ -6,10 +6,7 @@
     <div class="container" data-aos="fade-up">
         <h1 class="display-3 fw-bold">Furniture Industrial untuk Ruang Modern Anda</h1>
         <p class="lead col-lg-8 mx-auto">
-            Furniture Industrial untuk Ruang Modern Anda
-            Hadir dengan sentuhan besi kokoh dan aluminium elegan, produk kami menghadirkan nuansa industrial yang modern dan tahan lama.
-            Dari stool, kursi, hingga meja, setiap detail dirancang dengan presisi untuk memberi kenyamanan, keindahan, sekaligus kekuatan.
-            Cocok untuk rumah, kafe, kantor, maupun ruang usaha Anda.
+            Furniture industrial berbahan besi dan aluminium dengan desain modern, kokoh, dan elegan. Cocok untuk rumah, kafe, kantor, maupun ruang usaha Anda.
         </p>
         <div class="mt-4">
             <a href="<?= base_url('/products'); ?>" class="btn btn-dark btn-lg fw-bold px-5 py-3 me-2 mb-2">Lihat Produk</a>

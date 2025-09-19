@@ -269,25 +269,6 @@
             border-bottom-left-radius: 0;
         }
 
-        .shopee-alert {
-            background-color: #EE4D2D;
-            /* Warna oranye khas Shopee */
-            color: #ffffff;
-            border: none;
-        }
-
-        .shopee-alert .btn-shopee {
-            background-color: #ffffff;
-            color: #EE4D2D;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .shopee-alert .btn-shopee:hover {
-            opacity: 0.9;
-            transform: scale(1.05);
-        }
-
 
         @keyframes pulse {
             0% {
