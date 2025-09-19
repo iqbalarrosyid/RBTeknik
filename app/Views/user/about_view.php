@@ -4,7 +4,7 @@
 
 <section class="about-hero text-center text-white d-flex align-items-center">
     <div class="container" data-aos="fade-up">
-        <h1 class="display-4 fw-bold">Tentang RB Teknik</h1>
+        <h1 class="display-4 fw-bold">Tentang RB Teknik 37</h1>
         <p class="lead col-lg-8 mx-auto">
             Lebih dari sekadar furnitur, kami menciptakan warisan. Kenali perjalanan, filosofi, dan orang-orang di balik karya kami.
         </p>
@@ -18,29 +18,29 @@
         <div class="timeline-item" data-aos="fade-right">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
-                <h5 class="fw-bold">2015: Berawal dari Hobi</h5>
-                <p class="text-muted">Semuanya dimulai dari sebuah garasi kecil dan kecintaan mendalam terhadap seni pertukangan kayu. Sebuah hobi yang perlahan berubah menjadi passion.</p>
+                <h5 class="fw-bold">2015: Subkontraktor Ekspor</h5>
+                <p class="text-muted">Memulai perjalanan sebagai subkontraktor untuk perusahaan ekspor dengan fokus pada furniture industrial berbahan besi dan aluminium.</p>
             </div>
         </div>
         <div class="timeline-item" data-aos="fade-left">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
-                <h5 class="fw-bold">2018: Bengkel Pertama Dibuka</h5>
-                <p class="text-muted">Dengan semakin banyaknya kepercayaan, kami membuka bengkel kerja pertama kami di Yogyakarta, memberdayakan pengrajin lokal dengan visi yang sama.</p>
+                <h5 class="fw-bold">2020: Memasuki Marketplace</h5>
+                <p class="text-muted">Mulai memasarkan produk melalui Shopee dan Tokopedia. Awalnya hanya menjual kaki sofa, kemudian berkembang menjadi sofa dan berbagai furniture lainnya.</p>
             </div>
         </div>
         <div class="timeline-item" data-aos="fade-right">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
-                <h5 class="fw-bold">2022: Inovasi Desain Kustom</h5>
-                <p class="text-muted">Kami meluncurkan layanan desain kustom penuh, memungkinkan setiap klien untuk berkolaborasi dan menciptakan furnitur yang benar-benar personal.</p>
+                <h5 class="fw-bold">2022: Top Seller Sofa</h5>
+                <p class="text-muted">Menjadi salah satu seller dengan penjualan terbanyak untuk kategori sofa di Shopee, sekaligus memperkuat posisi di pasar online.</p>
             </div>
         </div>
         <div class="timeline-item" data-aos="fade-left">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
-                <h5 class="fw-bold">2025: Melayani Seluruh Indonesia</h5>
-                <p class="text-muted">Kini, RB Teknik telah dipercaya untuk mengirimkan karya-karya terbaiknya ke berbagai penjuru nusantara, menghiasi rumah dan bisnis dengan kualitas tanpa kompromi.</p>
+                <h5 class="fw-bold">2025: Ekspansi Digital</h5>
+                <p class="text-muted">Meluncurkan website resmi dan platform TikTok untuk memperluas engagement serta menjangkau lebih banyak pelanggan.</p>
             </div>
         </div>
     </div>
@@ -76,30 +76,6 @@
     </div>
 </section>
 
-
-<section class="container py-5">
-    <h2 class="text-center section-title" data-aos="fade-up">Kenali Tim Kami</h2>
-    <div class="row g-4 justify-content-center">
-        <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
-            <div class="card team-card border-0 text-center shadow-sm">
-                <img src="https://images.pexels.com/photos/834863/pexels-photo-834863.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top" alt="Founder">
-                <div class="card-body">
-                    <h5 class="card-title fw-bold">Rizky Bachtiar</h5>
-                    <p class="card-text text-muted">Founder & Lead Craftsman</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
-            <div class="card team-card border-0 text-center shadow-sm">
-                <img src="https://images.pexels.com/photos/3769747/pexels-photo-3769747.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top" alt="Customer Relations">
-                <div class="card-body">
-                    <h5 class="card-title fw-bold">Dian Lestari</h5>
-                    <p class="card-text text-muted">Customer Relations</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <section class="py-5 text-center cta-section my-4" data-aos="fade-up">
     <div class="container">

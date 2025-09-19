@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login Admin - RB Teknik</title>
+    <title>Login Admin - RB Teknik 37</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -56,7 +56,7 @@
             <div class="card-body p-4 p-md-5">
 
                 <div class="text-center mb-4">
-                    <img src="<?= base_url('favicon.png') ?>" alt="RB Teknik Logo" style="height: 50px;">
+                    <img src="<?= base_url('favicon.png') ?>" alt="RB Teknik 37 Logo" style="height: 50px;">
                 </div>
                 <h3 class="text-center fw-bold mb-2">Admin Panel Login</h3>
                 <p class="text-center text-muted mb-4">Selamat datang kembali, silakan masuk.</p>

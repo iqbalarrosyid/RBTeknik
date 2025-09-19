@@ -44,7 +44,7 @@ class Contact extends BaseController
 
         // 4. Konfigurasi email yang akan dikirim.
         $email->setTo('emailbisnisanda@gmail.com');      // GANTI DENGAN EMAIL TUJUAN ANDA
-        $email->setFrom('emailanda@gmail.com', 'Website RB Teknik'); // HARUS SAMA DENGAN `SMTPUser` di .env
+        $email->setFrom('emailanda@gmail.com', 'Website RB Teknik 37'); // HARUS SAMA DENGAN `SMTPUser` di .env
         $email->setReplyTo($emailFrom, $name); // Agar saat dibalas, emailnya terkirim ke pengunjung.
         $email->setSubject("Pesan dari Website: " . $subject);
 

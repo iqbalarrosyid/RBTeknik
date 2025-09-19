@@ -4,9 +4,12 @@
 
 <section class="hero-section text-center text-white d-flex align-items-center">
     <div class="container" data-aos="fade-up">
-        <h1 class="display-3 fw-bold">Seni Pertukangan dalam Setiap Detail</h1>
+        <h1 class="display-3 fw-bold">Furniture Industrial untuk Ruang Modern Anda</h1>
         <p class="lead col-lg-8 mx-auto">
-            Kami menciptakan furnitur kustom berkualitas tinggi yang memadukan keindahan abadi dengan fungsionalitas modern untuk rumah Anda.
+            Furniture Industrial untuk Ruang Modern Anda
+            Hadir dengan sentuhan besi kokoh dan aluminium elegan, produk kami menghadirkan nuansa industrial yang modern dan tahan lama.
+            Dari stool, kursi, hingga meja, setiap detail dirancang dengan presisi untuk memberi kenyamanan, keindahan, sekaligus kekuatan.
+            Cocok untuk rumah, kafe, kantor, maupun ruang usaha Anda.
         </p>
         <div class="mt-4">
             <a href="<?= base_url('/products'); ?>" class="btn btn-dark btn-lg fw-bold px-5 py-3 me-2 mb-2">Lihat Produk</a>
@@ -22,7 +25,7 @@
             <div class="p-4">
                 <i class="bi bi-gem fs-2 text-dark"></i>
                 <h4 class="fw-bold my-3">Kualitas Premium</h4>
-                <p class="text-muted">Dibuat dari material kayu solid pilihan yang menjamin kekuatan dan keindahan alami.</p>
+                <p class="text-muted">Dibuat dari material solid pilihan yang menjamin kekuatan dan keindahan alami.</p>
             </div>
         </div>
         <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="200">
@@ -52,7 +55,7 @@
                 </div>
             </div>
             <div class="col-lg-6" data-aos="fade-left">
-                <h2 class="section-title">Welcome to RB Teknik</h2>
+                <h2 class="section-title">Welcome to RB Teknik 37</h2>
                 <p class="lead">Where Artistry Meets Craftsmanship.</p>
                 <p>Kami adalah pengrajin furnitur dengan pengalaman bertahun-tahun dalam menciptakan karya yang memadukan seni dan fungsi. Setiap produk kami dibuat dari material pilihan dengan detail pengerjaan yang rapi.</p>
                 <a href="<?= base_url('/about'); ?>" class="btn btn-outline-dark mt-3">Pelajari Lebih Lanjut</a>
@@ -116,7 +119,7 @@
                     <li class="splide__slide">
                         <div class="testimonial-card">
                             <div class="stars">★★★★★</div>
-                            <p class="quote">"Proses pesanan kustomnya mudah dan hasilnya persis seperti yang saya bayangkan. Timnya sangat membantu. Terima kasih RB Teknik!"</p>
+                            <p class="quote">"Proses pesanan kustomnya mudah dan hasilnya persis seperti yang saya bayangkan. Timnya sangat membantu. Terima kasih RB Teknik 37!"</p>
                             <p class="author">- Citra Lestari, Surabaya</p>
                         </div>
                     </li>
@@ -177,6 +180,7 @@
 </section>
 
 
+
 <section class="py-5 text-center cta-section my-4" data-aos="fade-up">
     <div class="container">
         <h2 class="text-center section-title">Punya Ide Desain Sendiri?</h2>
@@ -190,7 +194,7 @@
 <?= $this->section('page_scripts') ?>
 <style>
     .hero-section {
-        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.pexels.com/photos/1866149/pexels-photo-1866149.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') center center/cover no-repeat;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('<?= base_url('hero.jpg') ?>') center center/cover no-repeat;
         height: 90vh;
         min-height: 600px;
     }

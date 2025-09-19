@@ -69,7 +69,7 @@
                         <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">Berapa lama proses pengerjaan untuk pesanan kustom?</button></h2>
                         <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#faqAccordionProduk">
                             <div class="accordion-body text-secondary">
-                                Waktu pengerjaan bervariasi tergantung pada tingkat kerumitan desain dan antrian produksi. Rata-rata, proses pengerjaan memakan waktu antara 3 hingga 6 minggu setelah konfirmasi desain dan pembayaran uang muka (DP) kami terima.
+                                Waktu pengerjaan bervariasi tergantung pada tingkat kerumitan desain dan antrian produksi. Rata-rata, proses pengerjaan memakan waktu sekitar 3 sampai 14 hari setelah konfirmasi desain dan pembayaran uang muka (DP) kami terima.
                             </div>
                         </div>
                     </div>

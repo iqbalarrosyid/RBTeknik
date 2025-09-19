@@ -31,7 +31,7 @@
             <div class="contact-info-card bg-white p-4 rounded shadow-sm h-100">
                 <i class="bi bi-envelope-fill fs-1 text-dark"></i>
                 <h4 class="fw-bold my-3">Alamat Email</h4>
-                <p class="text-muted">rbteknik@gmail.com</p>
+                <p class="text-muted">rbteknik37@gmail.com</p>
             </div>
         </div>
     </div>

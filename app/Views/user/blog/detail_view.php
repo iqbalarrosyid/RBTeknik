@@ -7,7 +7,7 @@
         <div class="col-lg-9 text-center" data-aos="fade-up">
             <h1 class="display-5 fw-bold mb-3"><?= esc($blog['title']) ?></h1>
             <p class="text-muted mb-4">
-                <span class="me-3"><i class="bi bi-person-fill me-1"></i> RB Teknik</span>
+                <span class="me-3"><i class="bi bi-person-fill me-1"></i> RB Teknik 37</span>
                 <span><i class="bi bi-calendar-event me-1"></i> <?= date('d M Y', strtotime($blog['created_at'])) ?></span>
             </p>
         </div>
@@ -50,7 +50,7 @@
 
             <div class="author-box d-flex align-items-center bg-white p-4 rounded-3 shadow-sm" data-aos="fade-up">
                 <div>
-                    <h5 class="fw-bold mb-0">Tim RB Teknik</h5>
+                    <h5 class="fw-bold mb-0">Tim RB Teknik 37</h5>
                     <p class="text-muted mb-0">Pengrajin dan desainer furnitur dengan dedikasi tinggi pada kualitas dan detail, berbasis di Yogyakarta.</p>
                 </div>
             </div>

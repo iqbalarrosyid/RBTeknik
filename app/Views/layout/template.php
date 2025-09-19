@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= esc($title ?? 'Elegan Furnitur - RB Teknik') ?></title>
+    <title><?= esc($title ?? 'Elegan Furnitur - RB Teknik 37') ?></title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -412,7 +412,7 @@
     <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-light fixed-top py-3">
         <div class="container-fluid px-4">
             <a class="navbar-brand" href="<?= base_url('/'); ?>">
-                <img src="<?= base_url('favicon.png') ?>" alt="RB Teknik Logo" height="35">
+                <img src="<?= base_url('favicon.png') ?>" alt="RB Teknik 37 Logo" height="35">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -452,7 +452,7 @@
             <div class="row">
 
                 <div class="col-md-6 col-lg-3 mx-auto mt-3">
-                    <h5 class="footer-title">RB Teknik</h5>
+                    <h5 class="footer-title">RB Teknik 37</h5>
                     <p>
                         Sebuah dedikasi untuk menciptakan furnitur berkualitas tinggi yang memadukan keindahan, fungsi, dan daya tahan untuk setiap ruang.
                     </p>
@@ -473,7 +473,7 @@
                     <h5 class="footer-title">Kontak</h5>
                     <ul class="list-unstyled">
                         <li><i class="bi bi-geo-alt-fill me-2"></i> Ngrancah, Sriharjo, Kec. Imogiri, Kabupaten Bantul, Daerah Istimewa Yogyakarta 55782</li>
-                        <li><i class="bi bi-envelope-fill me-2"></i> rbteknik@gmail.com</li>
+                        <li><i class="bi bi-envelope-fill me-2"></i> rbteknik37@gmail.com</li>
                         <li><i class="bi bi-telephone-fill me-2"></i> +62 838 9405 6521</li>
                     </ul>
                 </div>
@@ -486,12 +486,12 @@
         <div class="container">
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
                 <p class="text-white-50 mb-2 mb-md-0">
-                    &copy; <?= date('Y'); ?> RB Teknik. All Rights Reserved.
+                    &copy; <?= date('Y'); ?> RB Teknik 37. All Rights Reserved.
                 </p>
                 <div class="social-icons">
-                    <a href="#" class="text-white-50 mx-2" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-                    <a href="#" class="text-white-50 mx-2" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-                    <a href="#" class="text-white-50 mx-2" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                    <a href="https://www.instagram.com/rbteknik_furniture?igsh=MWFxcW50aHFwaGc1YQ%3D%3D&utm_source=qr" class="text-white-50 mx-2" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    <!-- <a href="#" class="text-white-50 mx-2" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-white-50 mx-2" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a> -->
                     <a href="https://shopee.co.id/rbteknik37" class="text-white-50 mx-2" target="_blank" aria-label="Shopee"><i class="bi bi-shop"></i></a>
                 </div>
             </div>
@@ -499,7 +499,7 @@
     </div>
 
     <?php
-    $pesan_whatsapp = "Halo, saya tertarik dengan produk furnitur dari RB Teknik. Bisa minta informasi lebih lanjut?";
+    $pesan_whatsapp = "Halo, saya tertarik dengan produk furnitur dari RB Teknik 37. Bisa minta informasi lebih lanjut?";
     ?>
     <a href="https://wa.me/6283894056521?text=<?= urlencode($pesan_whatsapp) ?>"
         class="wa-chat-btn"
