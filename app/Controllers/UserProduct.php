@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Models\ProductModel;
 use App\Models\ProductImageModel;
+use App\Models\ProductVariantModel;
+use App\Models\ProductVariantImageModel;
 
 class UserProduct extends BaseController
 {
@@ -78,33 +80,53 @@ class UserProduct extends BaseController
      */
     public function detail($id = null)
     {
-        $productModel = new ProductModel();
-        $productImageModel = new ProductImageModel();
+        $productModel       = new ProductModel();
+        $productImageModel  = new ProductImageModel();
+        $variantModel       = new ProductVariantModel();
+        $variantImageModel  = new ProductVariantImageModel();
 
+        // Ambil data produk
         $product = $productModel->find($id);
 
         if (!$product) {
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Produk tidak ditemukan dengan ID: ' . $id);
         }
 
-        // Ambil kategori produk saat ini
-        $category = $product['category'];
+        // Ambil gambar utama produk
+        $images = $productImageModel->where('product_id', $id)->findAll();
 
-        // Ambil produk terkait beserta 1 gambar utama (pakai LEFT JOIN)
+        // Ambil varian produk beserta gambar masing-masing
+        $variants = $variantModel->where('product_id', $id)->findAll();
+        foreach ($variants as &$variant) {
+            $variant['images'] = $variantImageModel->where('variant_id', $variant['id'])->findAll();
+        }
+
+        // Ambil produk terkait (dari kategori yang sama) beserta 1 gambar utama
         $related_products = $productModel
             ->select('products.*, MIN(product_images.image_url) as image_url')
             ->join('product_images', 'product_images.product_id = products.id', 'left')
-            ->where('products.category', $category)
+            ->where('products.category', $product['category'])
             ->where('products.id !=', $id)
             ->groupBy('products.id')
             ->limit(3)
             ->findAll();
 
+        // Tentukan harga min & max, sertakan harga default produk
+        $variantPrices = array_column($variants, 'price'); // harga varian
+        $variantPrices[] = $product['price']; // tambahkan harga produk default
+
+        $min_price = min($variantPrices);
+        $max_price = max($variantPrices);
+
+
         $data = [
             'title'            => $product['product_name'],
             'product'          => $product,
-            'images'           => $productImageModel->where('product_id', $id)->findAll(),
-            'related_products' => $related_products
+            'images'           => $images,
+            'variants'         => $variants,
+            'related_products' => $related_products,
+            'min_price'        => $min_price,
+            'max_price'        => $max_price
         ];
 
         return view('user/product/detail_view', $data);

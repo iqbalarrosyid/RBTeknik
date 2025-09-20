@@ -12,6 +12,7 @@
     </nav>
 
     <div class="row g-5">
+        <!-- Gambar Produk & Varian -->
         <div class="col-lg-7" data-aos="fade-right">
             <div class="mb-3 position-relative">
                 <img src="<?= base_url('uploads/products/' . esc($images[0]['image_url'] ?? 'default.jpg')) ?>"
@@ -24,31 +25,59 @@
                 </div>
             </div>
 
+            <!-- Slider Gambar Utama -->
             <?php if (!empty($images) && count($images) > 1): ?>
-                <div class="splide thumbnail-slider">
+                <div class="splide thumbnail-slider" id="product-thumbnails">
                     <div class="splide__track">
                         <ul class="splide__list">
                             <?php foreach ($images as $image): ?>
                                 <li class="splide__slide">
                                     <img src="<?= base_url('uploads/products/' . esc($image['image_url'])) ?>"
                                         class="rounded product-thumbnail"
-                                        alt="Thumbnail">
+                                        alt="Thumbnail"
+                                        data-image="<?= base_url('uploads/products/' . esc($image['image_url'])) ?>">
                                 </li>
                             <?php endforeach; ?>
                         </ul>
                     </div>
                 </div>
             <?php endif; ?>
+
+            <!-- Varian Produk -->
+            <?php if (!empty($variants)): ?>
+                <div class="mt-4">
+                    <h5 class="fw-bold mb-3">Varian Produk</h5>
+                    <div class="d-flex flex-wrap gap-2" id="variant-buttons">
+                        <?php foreach ($variants as $variant): ?>
+                            <button type="button" class="btn btn-outline-dark btn-sm variant-btn"
+                                data-images='<?= json_encode(array_column($variant['images'] ?? [], 'image_url')) ?>'
+                                data-price="<?= esc($variant['price']) ?>"
+                                data-stock="<?= esc($variant['stock']) ?>">
+                                <?= esc($variant['variant_name']) ?>
+                            </button>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            <?php endif; ?>
         </div>
 
+        <!-- Detail Produk -->
         <div class="col-lg-5" data-aos="fade-left" data-aos-delay="200">
-            <h1 class="display-5 fw-bold"><?= esc($product['product_name']) ?></h1>
+            <h1 class="display-5 fw-bold" id="product-name"><?= esc($product['product_name']) ?></h1>
             <p class="text-muted fs-5 mb-3">
                 Kategori: <a href="<?= base_url('products?category=' . urlencode($product['category'])) ?>" class="text-decoration-none text-dark fw-semibold"><?= esc($product['category']) ?></a>
             </p>
-            <p class="display-4 fw-bold text-dark mb-4">
-                Rp <?= number_format($product['price'], 0, ',', '.') ?>
+            <p class="display-4 fw-bold text-dark mb-4" id="product-price">
+                <?php if (!empty($variants)): ?>
+                    Rp <?= number_format($min_price, 0, ',', '.') ?>
+                    <?php if ($min_price != $max_price): ?>
+                        - Rp <?= number_format($max_price, 0, ',', '.') ?>
+                    <?php endif; ?>
+                <?php else: ?>
+                    Rp <?= number_format($product['price'], 0, ',', '.') ?>
+                <?php endif; ?>
             </p>
+
 
             <div class="d-flex align-items-center mb-4">
                 <button type="button" id="copyLinkBtn" class="btn btn-outline-dark me-2" data-bs-toggle="tooltip" title="Salin link produk">
@@ -69,7 +98,7 @@
             <?php
             $pesan_wa = "Halo, saya tertarik dengan produk '" . $product['product_name'] . "'. Bisa minta info lebih lanjut?";
             ?>
-            <div class="d-grid">
+            <div class="d-grid mb-4">
                 <a href="https://wa.me/6283894056521?text=<?= urlencode($pesan_wa) ?>"
                     target="_blank"
                     class="btn btn-dark btn-lg py-3 fw-bold">
@@ -79,13 +108,13 @@
         </div>
     </div>
 
+    <!-- Tabs Deskripsi & Spesifikasi -->
     <div class="row mt-5">
         <div class="col-12" data-aos="fade-up">
             <div class="product-tabs">
                 <ul class="nav nav-tabs" id="productTab" role="tablist">
                     <li class="nav-item" role="presentation"><button class="nav-link active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description-pane" type="button">Deskripsi</button></li>
                     <li class="nav-item" role="presentation"><button class="nav-link" id="specs-tab" data-bs-toggle="tab" data-bs-target="#specs-pane" type="button">Spesifikasi</button></li>
-                    <!-- <li class="nav-item" role="presentation"><button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews-pane" type="button">Ulasan</button></li> -->
                 </ul>
                 <div class="tab-content bg-white p-4 p-md-5" id="productTabContent">
                     <div class="tab-pane fade show active" id="description-pane" role="tabpanel"><?= nl2br(esc($product['description'])) ?></div>
@@ -102,21 +131,19 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="tab-pane fade" id="reviews-pane" role="tabpanel">Belum ada ulasan untuk produk ini.</div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<!-- Related Products -->
 <?php if (!empty($related_products)): ?>
     <section class="container py-5 mt-4">
         <h2 class="text-center section-title" data-aos="fade-up">Anda Mungkin Juga Suka</h2>
         <div class="row g-4 justify-content-center">
-
             <?php foreach ($related_products as $related): ?>
                 <div class="col-12 col-md-6 col-lg-4" data-aos="zoom-in">
-
                     <div class="card product-card h-100 border-0 overflow-hidden">
                         <div class="product-card-img-container">
                             <a href="<?= base_url('product/' . $related['id']) ?>">
@@ -139,15 +166,13 @@
                             </p>
                         </div>
                     </div>
-
                 </div>
             <?php endforeach; ?>
-
         </div>
     </section>
 <?php endif; ?>
 
-
+<!-- Modal Zoom -->
 <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-fullscreen">
         <div class="modal-content bg-transparent border-0">
@@ -179,11 +204,11 @@
         width: 100%;
         height: 100%;
         background: rgba(0, 0, 0, 0);
-        transition: background 0.3s ease;
         display: flex;
         justify-content: center;
         align-items: center;
         cursor: zoom-in;
+        transition: background 0.3s ease;
     }
 
     .zoom-overlay i {
@@ -244,7 +269,6 @@
         [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 
         const mainImage = document.getElementById('main-product-image');
-
         const zoomTrigger = document.querySelector('.zoom-overlay');
         const imageModalEl = document.getElementById('imageModal');
         if (zoomTrigger && imageModalEl) {
@@ -272,6 +296,7 @@
             });
         }
 
+        // Thumbnail slider
         const thumbnailSlider = document.querySelector('.thumbnail-slider');
         if (thumbnailSlider) {
             const splide = new Splide(thumbnailSlider, {
@@ -288,9 +313,29 @@
             }).mount();
 
             splide.on('click', function(slide) {
-                mainImage.src = slide.slide.querySelector('img').src;
+                mainImage.src = slide.slide.querySelector('img').dataset.image;
             });
         }
+
+        // Varian produk interaktif
+        const variantButtons = document.querySelectorAll('.variant-btn');
+        variantButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Update harga dan stock
+                const price = this.dataset.price;
+                document.getElementById('product-price').innerText = "Rp " + Number(price).toLocaleString('id-ID');
+
+                // Update gambar utama
+                const images = JSON.parse(this.dataset.images || '[]');
+                if (images.length > 0) {
+                    mainImage.src = "<?= base_url('uploads/products/') ?>" + images[0];
+                }
+
+                // Highlight tombol
+                variantButtons.forEach(b => b.classList.remove('btn-dark'));
+                this.classList.add('btn-dark');
+            });
+        });
     });
 </script>
 <?= $this->endSection() ?>

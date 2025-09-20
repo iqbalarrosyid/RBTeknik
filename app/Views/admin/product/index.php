@@ -62,6 +62,18 @@
                                     <td>
                                         <div class="fw-semibold text-dark"><?= esc($product['product_name']) ?></div>
                                         <span class="badge rounded-pill badge-custom fw-normal text-black"><?= esc($product['category']) ?></span>
+
+                                        <!-- Tampilkan varian jika ada -->
+                                        <?php if (!empty($product['variants'])): ?>
+                                            <ul class="list-unstyled mt-1 mb-0 small">
+                                                <?php foreach ($product['variants'] as $variant): ?>
+                                                    <li>
+                                                        <span class="fw-bold"><?= esc($variant['variant_name']) ?></span> -
+                                                        Rp <?= number_format($variant['price'], 0, ',', '.') ?>
+                                                    </li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        <?php endif; ?>
                                     </td>
                                     <td>
                                         <div class="truncate-text" title="<?= esc($product['description']) ?>"><?= esc($product['description']) ?></div>
@@ -103,7 +115,6 @@
                                             </form>
                                         </div>
                                     </td>
-
                                 </tr>
                             <?php endforeach ?>
                         <?php else: ?>
@@ -112,6 +123,7 @@
                             </tr>
                         <?php endif ?>
                     </tbody>
+
                 </table>
             </div>
         </div>
